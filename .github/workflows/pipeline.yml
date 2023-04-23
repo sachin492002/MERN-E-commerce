@@ -1,66 +1,48 @@
-name: Build and Deploy
+name: Build and deploy container app to Azure Web App - vaidya-healthcare
 
-# Run the workflow when code is pushed to the main branch
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
-# Set environment variables
-env:
-  MONGODB_URI: ${{ secrets.MONGODB_URI }}
-  TOKEN_KEY: ${{ secrets.TOKEN_KEY }}
-  EMAIL: ${{ secrets.EMAIL }}
-  PASSWORD: ${{ secrets.PASSWORD }}
-
-# This is the workflow that is being run.
 jobs:
-  build-and-deploy:
-    # This is telling GitHub to run the workflow on the latest version of Ubuntu.
-    runs-on: ubuntu-latest
+  build:
+    runs-on: 'ubuntu-latest'
+
     steps:
-      # Checkout the code from the GitHub repository
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      # Install dependencies and run tests for the client application
-      - name: Install and Test Client
-        working-directory: ./client
-        run: |
-          npm install
-          npm run test
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
 
-      # Install dependencies, export environment variables to be used by application and run tests for the server application
-      - name: Install and Test Server
-        working-directory: ./server
-        run: |
-          npm install
-          npm run test
-
-      # Build a Docker image for the client application
-      - name: Build Client Docker Image
-        working-directory: ./frontend
-        # Build image with tag rakeshpotnuru/productivity-app:client
-        run: |
-          docker build -t rakeshpotnuru/productivity-app:client-${{github.run_number}} .
-
-      # Build a Docker image for the server application
-      - name: Build Server Docker Image
-        working-directory:
-          ./server
-          # Build image with tag rakeshpotnuru/productivity-app:server
-        run: |
-          docker build -t rakeshpotnuru/productivity-app:server-${{github.run_number}} .
-
-      # Login to Docker Hub using credentials from repository secrets
-      - name: Login to Docker Hub
+      - name: Log in to registry
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: https://shopperlocal.azurecr.io/
+          username: ${{ secrets.AZURE_CONTAINER_USERNAME }}
+          password: ${{ secrets.AZURE_CONTAINER_PASSWORD }}
 
-      # Push the Docker images to Docker Hub
-      - name: Push Docker Images to Docker Hub
-        run: |
-          docker push rakeshpotnuru/productivity-app:client-${{github.run_number}}
-          docker push rakeshpotnuru/productivity-app:server-${{github.run_number}}
+      - name: Build and push container image to registry
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: shopperlocal.azurecr.io/${{ secrets.AZURE_CONTAINER_USERNAME }}/shopper-local:${{ github.sha }}
+          file: ./Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'local-shopper'
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: 'shopperlocal.azurecr.io/${{ secrets.AZURE_CONTAINER_USERNAME }}/shopper-local:${{ github.sha }}'
