@@ -1,0 +1,353 @@
+swagger: "2.0"
+info:
+  description: "This is Simple Shop Api for local-shopper"
+  version: "1.3.0"
+  title: "Shop Api"
+tags:
+- name: "Feeds"
+  description: "Feedbacks from users."
+- name: "User"
+  description: "User Details provided by user."
+- name: "Product"
+  description: "Product Details"
+
+
+paths:
+
+# User ROUTES
+  /users:
+    post:
+      tags:
+      - "User"
+      summary: "Add a new user to the database"
+      description: "Register a user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added to the DB"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        "200":
+          description: "Successfully created the user"
+        "401":
+          description: "Error creating the user"
+  /user:
+    post:
+      tags:
+      - "User"
+      summary: "Logs user into the system"
+      description: "Login the user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that is fetched from DB"
+        required: true
+        schema:
+          $ref: "#/definitions/UserLogin"
+      responses:
+        "200":
+          description: "Successfully logged the user"
+        "500":
+          description: "Invalid password"  
+        "401": 
+          description: "User does not exist"
+
+# USER ROUTES           
+  /usersAll:
+    get:
+      tags:
+      - "User"  
+      summary: "Get all user details"
+      description: "Get All users"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "500":
+          description: "Error performing the operation"
+  /usersBlocked:
+    get:
+      tags:
+      - "User"  
+      summary: "Get all user blocked details"
+      description: "Get All blocked users"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "500":
+          description: "Error performing the operation"
+
+  /users/{id}:
+    get:
+      tags:
+      - "User"
+      summary: "Get user details by userID"
+      description: "Get the user details by UserID"
+      # operationId: "getUserByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The user deatils that needs to be fetched by userID "
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        "400":
+          description: "Invalid userID supplied"
+        "404":
+          description: "User not found"
+        "500":
+          description: "Error performing the operation"
+
+#Feeds Routes
+  /feeds :
+   get:
+    tags:
+    - "Feeds"  
+    summary: "Get all feedback from users"
+    description: "Get feedbacks that are stored in database"
+    produces:
+    - "application/json"
+    responses:
+      "200":
+        description: "Successful operation"
+        schema:
+          $ref: "#/definitions/Feed"
+      "400":
+        description: "Error performing the operation"
+   post:
+    tags:
+    - "Feeds"  
+    summary: "Get all feedback from users"
+    description: "Get feedbacks that are stored in database"
+    produces:
+    - "application/json"
+    responses:
+      "200":
+        description: "Successful operation"
+        schema:
+          $ref: "#/definitions/Feed"
+      "400":
+        description: "Error performing the operation"
+# Product Routes
+  /product :
+     post:
+      tags:
+      - "Product"
+      summary: "Add a new user to the database"
+      description: "Register a user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added to the DB"
+        required: true
+        schema:
+          $ref: "#/definitions/Product"
+      responses:
+        "200":
+          description: "Successfully uploaded product"
+        "403":
+          description: "Error creating the product"
+  /products:
+     get:
+      tags:
+      - "Product"  
+      summary: "Get all feedback from users"
+      description: "Get feedbacks that are stored in database"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Error performing the operation"
+
+  /products/{id} :
+    get:
+      tags:
+      - "Product"
+      summary: "Get user details by userID"
+      description: "Get the user details by UserID"
+      # operationId: "getUserByName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "The product deatils that needs to be fetched by product id "
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "404":
+          description: "Product not found"
+  /orders:
+    get:
+      tags:
+      - "Order" 
+      summary: "Get all orders"
+      description: "Get all orders"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Product"
+        "400":
+          description: "Error performing the operation"
+    post:
+      tags:
+      - "Order"
+      summary: "post Orders"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object that needs to be added to the DB"
+        required: true
+        schema:
+          $ref: "#/definitions/Order"
+      responses:
+        "200":
+          description: "Successfully uploaded product"
+        "403":
+          description: "Error creating the product"
+definitions:
+  User:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+        example: "Bhikhu"
+      email:
+        type: "string"
+        example: "bhikhu45@gmail.com"
+      password:
+        type: "string"
+        example: "Ss@123456"
+      confirmPassword:
+        type: "string"
+        example: "Ss@123456"
+      profilePicUrl:
+        type: "string"
+        example: "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1575936123452-b67c3203c357%3Fixlib%3Drb-4.0.3%26ixid%3DMnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8%26w%3D1000%26q%3D80&tbnid=YmDohMp4T5AODM&vet=12ahUKEwjm0rqq7Pn9AhWhjOYKHSI_DDUQMygBegUIARC-AQ..i&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&docid=ExDvm63D_wCvSM&w=1000&h=667&itg=1&q=image&client=opera&ved=2ahUKEwjm0rqq7Pn9AhWhjOYKHSI_DDUQMygBegUIARC-AQ"
+      mobile:
+        type: "string"
+        example: "765xxx"
+      address:
+        type: "string"
+        example: "34- Ghaziabad,Delhi"
+      pincode:
+        type: "string"
+        example : "303045"
+    xml:
+      name: "User" 
+  UserLogin:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+        example: "bhikhu45@gmail.com"
+      password: 
+        type : "string"
+        example : "Ss@123456"
+    xml:
+      name: "UserLogin"
+  Feed:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example : "Suresh Jotha"
+      mail: 
+        type: "string"
+        example : "suresh@gmail.com"
+      msg:
+        type: "string"
+        example : "Awesome platform to get your daily needs at a low price."
+    xml:
+      name: "Feed"
+  Product:
+    type: object
+    properties:
+      name:
+        type: string
+        maxLength: 32
+        example: "Dove shop"
+      description:
+        type: string
+        maxLength: 2000
+        example : "This a good product"
+      price:
+        type: number
+        example : 230
+      image:
+        type: string
+        example : "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1575936123452-b67c3203c357%3Fixlib%3Drb-4.0.3%26ixid%3DMnwxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8%26w%3D1000%26q%3D80&tbnid=YmDohMp4T5AODM&vet=12ahUKEwjm0rqq7Pn9AhWhjOYKHSI_DDUQMygBegUIARC-AQ..i&imgrefurl=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fimage&docid=ExDvm63D_wCvSM&w=1000&h=667&itg=1&q=image&client=opera&ved=2ahUKEwjm0rqq7Pn9AhWhjOYKHSI_DDUQMygBegUIARC-AQ"
+      company:
+        type: string
+        maxLength: 32
+        example :  "Dove"
+      category:
+        type: string
+        maxLength: 32
+        example : "Dove"
+      seller:
+        type: string
+        required: false
+        example : "Himansh k"
+      stock:
+        type: number
+        required: true
+        example : 340
+    xml:
+      name: "Product" 
+  Order:
+    type: object
+    properties:
+       buyerEmail:
+          type: string
+          example: "mrsm492002@gmail.com"
+       cartItems:
+          type: Array
+          example: []
+    xml:
+     name: "Order"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"

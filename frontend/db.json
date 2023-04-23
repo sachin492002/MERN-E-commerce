@@ -1,0 +1,1007 @@
+{
+  "login": [
+    {
+      "name": {
+        "name": "himanshu",
+        "mobile": "9467234789",
+        "email": "himanshuhkofficial2@gmail.com",
+        "address": "Sri city Chitoor",
+        "pincode": "517572",
+        "password": "Himanshu123",
+        "confirmPassword": "Himanshu123",
+        "id": 1
+      },
+      "id": 1
+    }
+  ],
+  "orders": [
+    [
+      {
+        "buyerName": "himanshu",
+        "sellerName": "kataria"
+      },
+      {
+        "id": "staples01#fff",
+        "name": "kasuri Methi",
+        "color": "#fff",
+        "amount": 3,
+        "image": "https://rukminim1.flixcart.com/image/832/832/kgv5x8w0/spice-masala/g/5/d/25-kasuri-methi-box-catch-whole-original-imafxyf4cwzxyrhq.jpeg?q=70",
+        "price": 60,
+        "max": 30
+      },
+      {
+        "id": "recoAJYUCuEKxcPSr#fff",
+        "name": "Kiwi Green 4pcs",
+        "color": "#fff",
+        "amount": 2,
+        "image": "https://www.jiomart.com/images/product/420x420/599991414/kiwi-green-jumbo-premium-imported-3-pc-approx-360-g-420-g-product-images-o599991414-p591778589-0-202207282047.jpg",
+        "price": 220,
+        "max": 24
+      }
+    ]
+  ],
+  "blocked": [
+    {
+      "input": "himanshuhkofficial2@gmail.com",
+      "id": 2
+    },
+    {
+      "input": "Mohitsharma@gmail.com",
+      "id": 3
+    },
+    {
+      "input": "Sachin202@gmail.com",
+      "id": 5
+    }
+  ],
+  "users": [
+    {
+      "name": "himanshu",
+      "mobile": "9467234789",
+      "email": "himanshuhkofficial2@gmail.com",
+      "address": "Sri city Chitoor",
+      "pincode": "517572",
+      "password": "Himanshu123",
+      "confirmPassword": "Himanshu123",
+      "id": 1
+    },
+    {
+      "name": "himanshu",
+      "mobile": "9467234789",
+      "email": "himanshuhkofficial@gmail.com",
+      "address": "Sri city Chitoor",
+      "pincode": "517572",
+      "password": "Himanshu123",
+      "confirmPassword": "Himanshu123",
+      "id": 1
+    },
+    {
+      "name": "Sachin",
+      "mobile": "8824094063",
+      "email": "guest@guest.com",
+      "address": "Sri city",
+      "fav_language": "Buyer",
+      "pincode": "517572",
+      "password": "Sachin123",
+      "confirmPassword": "Sachin123",
+      "id": 2
+    },
+    {
+      "id": 3
+    }
+  ],
+  "feeds": [
+    {
+      "id": "Supriya Jain",
+      "mail": "himanshuhkcoding@gmail.com",
+      "msg": "The website is so good. Its has all the products that a person needs in daily life. "
+    },
+    {
+      "id": "Sachin Tendulkar",
+      "mail": "sachin2022@gmail.com",
+      "msg": "The website is helping the consumers and vendors a lot. Best of luck to the makers."
+    },
+    {
+      "id": "Vikyath",
+      "mail": "viky@gmail.com",
+      "msg": "Nice Website!!!!!!"
+    },
+    {
+      "id": "Mohit",
+      "mail": "mohit44@gmail.com",
+      "msg": "Quite Relatable^-^"
+    },
+    {
+      "id": "Himanshu",
+      "mail": "gha@gmail.com",
+      "msg": "something"
+    }
+  ],
+  "data": [
+    {
+      "id": "recZkNf2kwmdBcqd0",
+      "name": "amul butter",
+      "price": 560,
+      "image": "https://live.staticflickr.com/65535/52457402092_2081af1f28_z.jpg",
+      "company": "amul",
+      "description": "Spread on Bread, Parantha, Roti, Nans, Sandwiches \n Toppings : Pav Bhaji, Dals, Soups, Salads, Rice \n Cooking Medium : Butter Paneer Masala, Butter Corn Masala and thousands of delightful recipes",
+      "category": "dairy",
+      "shipping": true,
+      "stock": 24,
+      "seller": "mrsm492002@gmail.com",
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recEHmzvupvT8ZONH",
+      "name": "amul ghee",
+      "price": 1000,
+      "image": "https://live.staticflickr.com/65535/52458454808_184bd0f1fc_z.jpg",
+      "colors": [
+        "#000",
+        "#ffb900"
+      ],
+      "company": "amul",
+      "description": "Rich aroma and energy\nEnhanced taste\nmaterial_features:Vegetarian\nitem_form:liquid",
+      "category": "dairy",
+      "stock": 24,
+      "reviews": 20,
+      "seller": "mrsm492002@gmail.com",
+      "stars": 4.3
+    },
+    {
+      "id": "rec5NBwZ5zCD9nfF0",
+      "name": "parle rusk iliachi toast",
+      "price": 460,
+      "image": "https://m.media-amazon.com/images/I/61oXa-EhW-L._SX679_.jpg",
+      "colors": [
+        "#ffb900",
+        "#0000ff"
+      ],
+      "company": "parle",
+      "description": "Parle rusk comes with the goodness of wheat & a crunchy texture\nInfused with elaichi essence that releases a sweet & delicious aroma in every bite\nEnjoy Parle rusk with a hot cup of tea to relish every moment of it A perfect companion to your hot cup of tea \nIt is 100% Vegetarian product\nCountry of origin: India",
+      "category": "dairy",
+      "stock": 34,
+      "shipping": true,
+      "seller": "mrsm492002@gmail.com",
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recd1jIVIEChmiwhe",
+      "name": "amul coconut butter cookies",
+      "price": 120,
+      "image": "https://live.staticflickr.com/65535/52457924621_b68cf73bfc_z.jpg",
+      "colors": [
+        "#000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "amul",
+      "description": "Give in to your sweet cravings with Amul Coconut Cookies. These biscuits are crunchy yet delicate in texture and delicious coconut flavour will leave you wanting for more. They are a perfect accompaniment to your tea or coffee. They are prepared using the finest ingredients and its hygienic packaging ensures they remain fresh over a period of time. Go ahead, buy online Amul Coconut Cookies today!",
+      "category": "dairy",
+      "shipping": true,
+      "seller": "mrsm492002@gmail.com",
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recoM2MyHJGHLVi5l",
+      "name": "amul cheese block 250g",
+      "price": 233,
+      "image": "https://live.staticflickr.com/65535/52457924681_31603c453b_z.jpg",
+      "colors": [
+        "#000"
+      ],
+      "company": "amul",
+      "description": "Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein, Casein. It comprises of milk proteins and fats. Cheese can give a lip-smacking flavour to every dish, you can either consume it whole, melt it in your food or shred it on salads and sandwiches. So go ahead and buy Amul Cheese Block online today.",
+      "category": "dairy",
+      "shipping": true,
+      "seller": "mrsm492002@gmail.com",
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recotY5Nh00DQFdkm",
+      "name": "britannia cheese slices",
+      "price": 420,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://live.staticflickr.com/65535/52458375555_f3dbfa0639_z.jpg",
+      "colors": [
+        "#00ff00",
+        "#0000ff",
+        "#ff0000"
+      ],
+      "company": "britannia",
+      "description": "Cheese is a dairy product, derived from milk and produced in wide ranges of flavours, textures and forms by coagulation of the milk protein, Casein. It comprises of milk proteins and fats. Cheese can give a lip-smacking flavour to every dish, you can either consume it whole, melt it in your food or shred it on salads and sandwiches. So go ahead and buy Britannia Cheese Slices online today.",
+      "category": "dairy",
+      "shipping": true,
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "rec1Ntk7siEEW9ha1",
+      "name": "britannia traet coco cream croissant",
+      "price": 540,
+      "featured": true,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://live.staticflickr.com/65535/52458191059_0411ce4f91_z.jpg",
+      "colors": [
+        "#0000ff",
+        "#000"
+      ],
+      "company": "britannia",
+      "description": "Britannia Treat Coco Creme Croissant 45 g is a piece of heavenly dessert that is so light and tasty! Soft and delicious flavours spread across the sweet roll with creamy notes every now and then, this is by far the best option to indulge. So go ahead and buy this product online today!",
+      "category": "dairy",
+      "shipping": true,
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recNZ0koOqEmilmoz",
+      "name": "paras ghee",
+      "seller": "mrsm492002@gmail.com",
+      "price": 599,
+      "image": "https://live.staticflickr.com/65535/52457924521_c032f6b996_z.jpg",
+      "colors": [
+        "#000",
+        "#ff0000"
+      ],
+      "company": "paras",
+      "description": "Ghee is a class of clarified butter that originated in ancient India. It is commonly used in Indian cooking. Paras Ghee can be swapped for vegetable oil or coconut oil in baked goods or can be used for sautéing and deep-frying. Or simply melt it and spread it on roti, or pour it on vegetables/dal before serving. So go ahead and buy this product online today!",
+      "category": "dairy",
+      "shipping": true,
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recrfxv3EwpvJwvjq",
+      "name": "parle rola cola candy",
+      "seller": "mrsm492002@gmail.com",
+      "price": 150,
+      "image": "https://live.staticflickr.com/65535/52457924451_cf551ec8b4_z.jpg",
+      "featured": true,
+      "colors": [
+        "#000",
+        "#00ff00"
+      ],
+      "company": "parle",
+      "description": "Candy with the goodness of cola - it's a drink you can chew! That's Parle Rol . a . Cola Candy for you. It's not only a hit among children but adults can't get enough too. This candy was a 90s star and continues to win hearts with its delicious cola taste. So go ahead buy it online today!",
+      "category": "dairy",
+      "shipping": true,
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recoW8ecgjtKx2Sj2",
+      "name": "Sweet Lime Premium Indian 4 Pc",
+      "seller": "mrsm492002@gmail.com",
+      "price": 75,
+      "image": "https://www.jiomart.com/images/product/420x420/599990082/sweetlime-premium-indian-4-pc-approx-0-80-kg-1-10-kg-product-images-o599990082-p593160805-0-202209070708.jpg",
+      "colors": [
+        "#ff0000",
+        "#ffb900",
+        "#00ff00"
+      ],
+      "company": "local",
+      "description": "Sweet Lime offers a perfect blend of sweetness and sourness with low acid. It is exceptionally juicy, with a mild but rich flavour. The intensely aromatic leathery-peel, with prominent oil glands, has a mixed blush of yellow, orange, and green. The flesh is soft, luscious with cream-coloured inedible seeds.",
+      "category": "fruits",
+      "shipping": true,
+      
+      "stock": 2,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recEOA6qtDag1hRbU",
+      "name": "Pomegranate Kesar Medium Premium Indian 4 Pc",
+      "price": 125,
+      "image": "https://www.jiomart.com/images/product/420x420/599991204/pomegranate-kesar-medium-premium-indian-4-pc-approx-1-kg-1-12-kg-product-images-o599991204-p591041952-0-202207282047.jpg",
+      "colors": [
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "local",
+      "seller": "mrsm492002@gmail.com",
+      "description": "Pomegranate Kesar offers arils that are full of sweet juice with a slight tangy punch. The rind is glossy red and contains blood-red arils with soft edible seeds. Pomegranates are also known as the fruit of Paradise. Pomegranates are a rich source of Vitamin C, Vitamin D, and Vitamin K and are called a Super food. Kesar is one of the most popular varieties of Pomegranates in India.",
+      "category": "fruits",
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recoAJYUCuEKxcPSr",
+      "name": "Kiwi Green 4pcs",
+      "price": 120,
+      "image": "https://www.jiomart.com/images/product/420x420/599991414/kiwi-green-jumbo-premium-imported-3-pc-approx-360-g-420-g-product-images-o599991414-p591778589-0-202207282047.jpg",
+      "colors": [
+        "#ffb900",
+        "#ff0000",
+        "#00ff00"
+      ],
+      "company": "local",
+      "description": "Kiwi Green Jumbo offers a sharp, sweet, and tart flavour with a slight acidic edge. It is refreshingly juicy. The exterior skin is hairy, russet-brown, and thin. The interior has a starburst pattern, with emerald green flesh sprinkled with edible black seeds. Jumbo Kiwi Green contains comparatively more flesh that is pleasing and delectable. Kiwi is an exotic wonder that is rich in Vitamin C and Vitamin K.",
+      "category": "fruits",
+      "seller": "mrsm492002@gmail.com",
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "recQ0fMd8T0Vk211E",
+      "name": "Apple 4pcs",
+      "price": 235,
+      "image": "https://www.jiomart.com/images/product/420x420/599991388/apple-dazzle-premium-imported-4-pc-approx-700-g-800-g-product-images-o599991388-p591778602-0-202207282046.jpg",
+      "colors": [
+        "#000"
+      ],
+      "company": "local",
+      "description": "Apple Dazzle is sweet and delicious. It is a bright red apple covered in glossy skin. The flesh is white to pale cream, very juicy and offers the crispiness of a watermelon. Apple Dazzle is known for its distinct flavour and storability. It is a versatile Apple good for snacking, baking, cooking and juicing. Make the apples a part of your daily diet. Eat fresh or add to your breakfast cereals, toss into salads for lunch or eat as a fresh dessert post dinner.",
+      "category": "fruits",
+      "shipping": true,
+      "seller": "mrsm492002@gmail.com",
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "rec7CjDWKRgNQtrKe",
+      "name": "Grapes Green Seedless Premium Imported Pack 400 g",
+      "price": 249,
+      "image": "https://www.jiomart.com/images/product/420x420/599990782/grapes-green-seedless-premium-imported-pack-400-g-product-images-o599990782-p590860341-0-202207290620.jpg",
+      "colors": [
+        "#00ff00"
+      ],
+      "company": "local",
+      "description": "Grapes Imported Green offer a mildly sweet and slight tart taste. They may be small to medium-sized luscious berries of round to elongated shape. The skin colour ranges from yellow to green, while the flesh is firm and crisp. They have a pleasant musky aroma. Green imported grapes are a popular table variety and are excellent for fresh snacking and for adding to salads. They are a rich source of Vitamin C.",
+      "category": "fruits",
+      "stock": 24,
+      "reviews": 20,
+      "seller": "mrsm492002@gmail.com",
+      "stars": 3.5
+    },
+    {
+      "id": "recF0KpwlkF7e8kXO",
+      "name": "Banana 6pcs",
+      "price": 75,
+      "image": "https://www.jiomart.com/images/product/600x600/590001285/banana-robusta-6-pcs-box-approx-800-g-1100-g-product-images-o590001285-p590001285-0-202203170808.jpg",
+      "colors": [
+        "#0000ff"
+      ],
+      "company": "local",
+      "description": "The Robusta Banana is medium to large, with a thin yellowish-green skin that turns yellow upon ripening. Its flesh is soft in texture and has a sugary taste and aroma. It makes a perfectly satisfying choice for bread and cakes and is ideal for fruit salads. Robusta Banana pairs well with chocolate, keeping your dessert simply delicious. So, go ahead, buy Banana Robusta 6 pcs (Box) (Approx 800 g - 1100 g) online now!",
+      "category": "fruits",
+      "shipping": true,
+      "seller": "mrsm492002@gmail.com",
+      "stock": 24,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "grocery08",
+      "name": "atta",
+      "price": 550,
+      "image": "https://rukminim1.flixcart.com/image/280/280/kohigsw0/flour/j/f/a/chakki-fresh-atta-whole-wheat-flour-pillsbury-original-imag2xggzcbnrchc.jpeg?q=70",
+      "featured": true,
+      "seller": "mrsm492002@gmail.com",
+      "colors": [
+        "#000",
+        "#00ff00"
+      ],
+      "company": "pillsbury",
+      "description": "fresh atta \n used for cooking \n type - Whole-Wheat Flour",
+      "category": "dairy",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3
+    },
+    {
+      "id": "grocery09",
+      "name": "aloo-bhujia",
+      "price": 209,
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/snack-savourie/t/8/x/-original-imaggrakmzxqe8ef.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#ffb900",
+        "#00ff00"
+      ],
+      "company": "bikano",
+      "description": "taste-salty \n It is pertinent to note that, actual product packaging and materials may contain more and/or different information which may include nutritional information/allergen declaration/special instruction for intended use/warning/directions etc. We recommend the consumers to always read the label carefully before using or consuming any products.",
+      "category": "staples",
+      "seller": "mrsm492002@gmail.com",
+      "shipping": true
+    },
+    {
+      "id": "grocery10",
+      "name": "cold-drink",
+      "price": 40,
+      "image": "https://rukminim1.flixcart.com/image/832/832/l3dcl8w0/aerated-drink/l/t/4/-original-imagegf8efekw8fv.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#ffb900",
+        "#00ff00"
+      ],
+      "company": "coca cola",
+      "description": "Be it with pizzas, burgers, or biryani, meals seem incomplete without a chilled and bubbling bottle of Coca-Cola. This flavoured refreshing drink is one of the most loved and popular drinks that brings enjoyment in every sip and it gets all the more better when shared with your loved ones. \n A Taste that Refreshes",
+      "category": "staples",
+      "seller": "mrsm492002@gmail.com",
+      "shipping": true
+    },
+    {
+      "id": "staples01",
+      "name": "kasuri Methi",
+      "price": 60,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kgv5x8w0/spice-masala/g/5/d/25-kasuri-methi-box-catch-whole-original-imafxyf4cwzxyrhq.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "catch",
+      "seller": "mrsm492002@gmail.com",
+      "description": "Type Kasoori Methi\n form factor-whole \nquantity-25g\n organic-no     ",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples02",
+      "name": "moong-dal",
+      "price": 260,
+      "image": "https://www.haldirams.com/media/catalog/product/cache/d792111afa4c25819db06da8dd2e361f/m/o/moong_dal_1_1.jpg",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "Haldiram",
+      "description": "quantity-1kg ",
+      "seller": "mrsm492002@gmail.com",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples03",
+      "name": "rice",
+      "price": 231,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kokdci80/rice/w/i/r/white-super-na-basmati-rice-pouch-india-gate-original-imag2zwmnat9whzq.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "india-gate",
+      "description": "Today, the world’s largest rice producers are China, India, and Indonesia. Outside of Asia, Brazil is the largest rice producer. Rice grows in warm, wet climates. It thrives in waterlogged soil, such as in the flood plains of Asian rivers like the Ganges and the Mekong. Deepwater rice is a variety of rice that is adapted to deep flooding, and is grown in eastern Pakistan, Vietnam, and Burma.",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples04",
+      "name": "chana-dal",
+      "seller": "mrsm492002@gmail.com",
+      "price": 260,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kfpq5jk0/pulses/q/e/x/1-chana-dal-chana-dal-unbranded-original-imafw49gj2ctg4xd.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "unbranded",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples05",
+      "name": "masoor-dal",
+      "seller": "mrsm492002@gmail.com",
+      "price": 260,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kfpq5jk0/pulses/u/m/j/1-masoor-dal-masoor-dal-unbranded-original-imafw47hcsbfhhmz.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "unbranded",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples06",
+      "name": "arhar-dal",
+      "seller": "mrsm492002@gmail.com",
+      "price": 260,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kfpq5jk0/pulses/8/u/r/1-toor-dal-arhar-dal-desi-toor-dal-unbranded-original-imafw49gxj269b5w.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "unbranded",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples07",
+      "name": "brown-dal",
+      "seller": "mrsm492002@gmail.com",
+      "price": 560,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kfpq5jk0/pulses/9/t/4/1-chana-brown-chana-unbranded-original-imafw47h3wss3xe3.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "unbranded",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples08",
+      "seller": "mrsm492002@gmail.com",
+      "name": "soya-chunk",
+      "price": 560,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kx6fwcw0/soya-chunk/h/0/f/-original-imag9p3pacw4qfyh.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "NUTRELA",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples09",
+      "name": "Soya Granules",
+      "seller": "mrsm492002@gmail.com",
+      "price": 560,
+      "image": "https://rukminim1.flixcart.com/image/832/832/ky3b0y80/soya-chunk/u/8/u/-original-imagaeg6m52mzrrx.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "NUTRELA",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "staples10",
+      "name": "Mini Soya Chunks",
+      "seller": "mrsm492002@gmail.com",
+      "price": 560,
+      "image": "https://rukminim1.flixcart.com/image/832/832/ky3b0y80/soya-chunk/z/v/e/-original-imagaeg6xxvfzckq.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "NUTRELA",
+      "description": "in Indian cuisine, dal  are dried, split pulses (e.g., lentils, peas, and beans) that do not require soaking before cooking. India is the largest producer of pulses in the world. The term is also used for various soups prepared from these pulses",
+      "category": "staples",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth01",
+      "name": "printed Men Round Neck Black T-Shirt",
+      "price": 1560,
+      "image": "https://rukminim1.flixcart.com/image/832/832/k65d18w0/t-shirt/g/h/q/m-cj5333-010-nike-original-imafzhft5g7r9kwx.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "nike",
+      "seller": "mrsm492002@gmail.com",
+      "description": "",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth02",
+      "name": "printed Men Round Neck White T-Shirt",
+      "price": 990,
+      "image": "https://rukminim1.flixcart.com/image/832/832/knni7ww0/t-shirt/l/f/l/m-58666602-puma-original-imag2acmjaugftqd.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "puma",
+      "description": "",
+      "seller": "mrsm492002@gmail.com",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth03",
+      "name": "solid Men Round Neck Red T-Shirt",
+      "price": 1260,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kolsscw0/t-shirt/g/d/k/xxl-gm2108-adidas-original-imag3yypbv4rqgjs.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "adidas",
+      "description": "",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "seller": "mrsm492002@gmail.com",
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth04",
+      "name": "men Regular Fit Solid Spread Collar Formal Shirt",
+      "price": 1235,
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/j/x/v/-original-imaghrnsfvbhrsny.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "PETER ENGLAND",
+      "description": "",
+      "seller": "mrsm492002@gmail.com",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth05",
+      "name": "Men Regular Fit Printed Spread Collar Casual Shirt",
+      "price": 1350,
+      "image": "https://rukminim1.flixcart.com/image/832/832/knan98w0/shirt/g/q/d/xl-usshtd0131-u-s-polo-assn-original-imag2y6rthtrw8gd.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "U.S. POLO ASSN.",
+      "seller": "mrsm492002@gmail.com",
+      "description": "",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30,
+      "featured": true
+    },
+    {
+      "id": "cloth06",
+      "name": "Men Slim Fit Checkered Casual Shirt",
+      "price": 1230,
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/f/f/4/-original-imaggrfrnvzyhhgv.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "FLYING MACHINE ",
+      "description": "",
+      "seller": "mrsm492002@gmail.com",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth07",
+      "name": "Men Slim Fit Printed Spread Collar Casual Shirt",
+      "price": 1569,
+      "image": "https://rukminim1.flixcart.com/image/832/832/l4fxh8w0/shirt/v/3/o/-original-imagfc3p3m3wg9g5.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "LEVI'S ",
+      "description": "",
+      "seller": "mrsm492002@gmail.com",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth08",
+      "name": "Tec Sport Jacket Full Sleeve Solid Men Casual Jacket",
+      "price": 2320,
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/jacket/h/n/c/-original-imagg9zvwhtjfe6f.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "PUMA",
+      "description": "",
+      "category": "cloth",
+      "shipping": true,
+      "reviews": 20,
+      "seller": "mrsm492002@gmail.com",
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth09",
+      "name": "Full Sleeve Solid Men Sports Jacket",
+      "price": 2560,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kxqg2a80/jacket/h/1/m/m-1-no-ha7723-reebok-original-imaga4hhphjx7mfh.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "REEBOK",
+      "description": "",
+      "category": "cloth",
+      "seller": "mrsm492002@gmail.com",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30
+    },
+    {
+      "id": "cloth10",
+      "name": "Full Sleeve Solid Men Bomber Jacket",
+      "price": 2235,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kwb07m80/jacket/i/9/c/-original-imag9ycceyxzjehm.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "U.S. POLO ASSN. ",
+      "description": "",
+      "category": "cloth",
+      "seller": "mrsm492002@gmail.com",
+      "shipping": true,
+      "reviews": 20,
+      "stars": 4.3,
+      "stock": 30,
+      "featured": true
+    },
+    {
+      "id": "13",
+      "name": "Paras Ghee",
+      "price": "120",
+      "image": "https://live.staticflickr.com/65535/52457924486_4f0dc85540_z.jpg",
+      "category": "dairy",
+      "seller": "mrsm492002@gmail.com"
+    },
+    {
+      "id": "electronics01",
+      "name": "APPLE iPhone 11",
+      "seller": "mrsm492002@gmail.com",
+      "price": 60000,
+      "image": "https://rukminim1.flixcart.com/image/832/832/k2jbyq80pkrrdj/mobile-refurbished/y/k/z/iphone-11-64-a-mwlx2hn-a-apple-0-original-imafkg24ymsjav9h.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "APPLE",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics02",
+      "name": "OnePlus Bullets Wireless Z2 Bluetooth Headset ",
+      "seller": "mrsm492002@gmail.com",
+      "price": 1535,
+      "image": "https://rukminim1.flixcart.com/image/832/832/l4ei1e80/headphone/b/j/w/bullets-wireless-z2-oneplus-original-imagfaww7ga6nshz.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "ONEPLUS",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics03",
+      "name": "OPPO Enco Buds With 24 hours Battery Life Bluetooth Headset ",
+      "seller": "mrsm492002@gmail.com",
+      "price": 2000,
+      "image": "https://rukminim1.flixcart.com/image/832/832/kura1e80/headphone/d/e/s/eti81-eti82-oppo-original-imag7szs9dcxyrhs.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "OPPO",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics04",
+      "name": "SONY Alpha Full Frame ILCE-7M2K/BQ IN5 Mirrorless Camera Body with 28 - 70 mm Lens",
+      "price": 82235,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/l5jxt3k0/dslr-camera/m/n/a/-original-imagg7hsggshhwbz.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "SONY",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics05",
+      "name": "ZEBRONICS Zeb-K20 Wired USB Desktop Keyboard",
+      "price": 350,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/ksxjs7k0/keyboard/desktop-keyboard/i/n/d/zeb-k20-zebronics-original-imag6dugjbazygpz.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "ZEBRONICS",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics06",
+      "name": "ASUS TUF Gaming A17 with 90Whr Battery Ryzen 5 Hexa Core AMD R5-4600H - (8 GB/512 GB SSD/Windows 11 Home/4 GB Graphics/NVIDIA GeForce GTX 1650/144 Hz) FA706IHRB-HX041W Gaming Laptop ",
+      "price": 60050,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/l3rmzrk0/computer/z/2/c/-original-imagetjyhhtrtkdg.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "ASUS",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics07",
+      "name": "Apple 20W ,USB-C Power Charging Adapter for iPhone, iPad & AirPods",
+      "price": 1735,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kgqvlow0/battery-charger/d/a/7/apple-mhjd3hn-a-original-imafwwwfg5xgcctm.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "APPLE",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics08",
+      "name": " Pebble Cosmos Ultra 1.91 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial Smartwatch",
+      "price": 3155,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/smartwatch/k/o/m/-original-imaghudxbdyb5gy7.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "REALME",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics09",
+      "name": "realme Pad X 6 GB RAM 128 GB ROM 11 inch with Wi-Fi+5G Tablet",
+      "price": 28235,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/xif0q/tablet/y/a/y/-original-imaggfrhvghucswf.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "REALME",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30
+    },
+    {
+      "id": "electronics10",
+      "name": "Mi 3i 20000 mAh Power Bank (Fast Charging, 18W) ",
+      "price": 1900,
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://rukminim1.flixcart.com/image/832/832/kfcv6vk0/power-bank/r/f/5/power-bank-20000-plm18zm-mi-original-imafvtc7x9zgrzbz.jpeg?q=70",
+      "colors": [
+        "#ff0000",
+        "#00ff00",
+        "#0000ff"
+      ],
+      "company": "MI",
+      "description": "",
+      "category": "electronics",
+      "shipping": true,
+      "stock": 30,
+      "featured": true
+    },
+    {
+      "id": "124",
+      "name": "Saras",
+      "price": "120",
+      "seller": "mrsm492002@gmail.com",
+      "image": "https://live.staticflickr.com/65535/52457924486_4f0dc85540_z.jpg",
+      "category": "dairy",
+      "description": "hrllo"
+    }
+  ]
+}
