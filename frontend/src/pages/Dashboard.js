@@ -14,24 +14,25 @@ export default function Dashboard() {
   const [prod, setProd] = useState([]);
   const user = useContext(UserContext);
   const [selectedItem, setSelectedItem] = useState('/profile');
+  console.log(localStorage.getItem("ProfilePicUrl"))
   useEffect(() => {
     if (localStorage.getItem('Type') === 'Seller') {
       axios
-        .get(
-          `https://localshopper.azurewebsites.net/api/orders/sell/${localStorage.getItem('Email')}`
-        )
-        .then((response) => {
-          setData(response.data);
-        });
+          .get(
+              `https://localshopper.azurewebsites.net/api/orders/sell/${localStorage.getItem('Email')}`
+          )
+          .then((response) => {
+            setData(response.data);
+          });
       axios
-        .get(
-          `https://localshopper.azurewebsites.net/api/products/seller/${localStorage.getItem(
-            'Email'
-          )}`
-        )
-        .then((response) => {
-          setProd(response.data);
-        });
+          .get(
+              `https://localshopper.azurewebsites.net/api/products/seller/${localStorage.getItem(
+                  'Email'
+              )}`
+          )
+          .then((response) => {
+            setProd(response.data);
+          });
     }
   }, []);
   const handleItemClick = (link) => {
@@ -53,11 +54,11 @@ export default function Dashboard() {
   useEffect(() => {
     if (localStorage.getItem('Type') === 'Buyer') {
       axios
-        .get(`https://localshopper.azurewebsites.net/api/orders/${localStorage.getItem('Email')}`)
-        .then((response) => {
-          console.log(response.data);
-          setData(response.data);
-        });
+          .get(`https://localshopper.azurewebsites.net/api/orders/${localStorage.getItem('Email')}`)
+          .then((response) => {
+            console.log(response.data);
+            setData(response.data);
+          });
     }
   }, []);
 
@@ -70,429 +71,328 @@ export default function Dashboard() {
     });
     setData(updatedData);
     axios
-      .put(`https://localshopper.azurewebsites.net/api/orders/${oid}/items/${pid}/status/`, {
-        status: newStatus,
-      })
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-      });
+        .put(`https://localshopper.azurewebsites.net/api/orders/${oid}/items/${pid}/status/`, {
+          status: newStatus,
+        })
+        .then((response) => {
+          console.log(response.data);
+          setData(response.data);
+        });
   };
 
   if (localStorage.getItem('Type') === 'Seller') {
     return (
-      <div className="divid">
-        <div className="sidebar">
-          <div className="image">
-            <div className="imghk">
-              <img
-                src={localStorage.getItem('ProfilePicUrl')}
-               
-                alt="Profile Pic"
-                className="imghk"
-              />
+        <div className="divid">
+          <div className="sidebar">
+            <div className="image">
+              <div className="imghk">
+                <img
+                    src={"https://localshopper.azurewebsites.net/"+localStorage.getItem('ProfilePicUrl')}
+
+                    alt="Profile Pic"
+                    className="imghk"
+                />
+              </div>
+              <div className="top-heading">
+                {localStorage.getItem('loggedIn') === null
+                    ? 'new user'
+                    : localStorage.getItem('Name')}
+              </div>
             </div>
-            <div className="top-heading">
-              {localStorage.getItem('loggedIn') === null
-                ? 'new user'
-                : localStorage.getItem('Name')}
-            </div>
+            <hr className="hr" />
+            <ul className="sidebar-list">
+              {sellerSideData.map((val, key) => (
+                  <li
+                      id={
+                        window.location.pathname === val.link ? 'active row' : 'row'
+                      }
+                      className="row"
+                      key={key}
+                      onClick={() => handleItemClick(val.link)}
+                  >
+                    <div id="icon">{val.icon}</div>
+                    <div id="title">{val.title}</div>
+                  </li>
+              ))}
+            </ul>
           </div>
-          <hr className="hr" />
-          <ul className="sidebar-list">
-            {sellerSideData.map((val, key) => (
-              <li
-                id={
-                  window.location.pathname === val.link ? 'active row' : 'row'
-                }
-                className="row"
-                key={key}
-                onClick={() => handleItemClick(val.link)}
-              >
-                <div id="icon">{val.icon}</div>
-                <div id="title">{val.title}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="orders">
-          {selectedItem === '/profile' && (
-            <div className="/profile">
-              <div>
-              <h1 className="upperhk">{localStorage.getItem('Name')}  <Link to="/update"><EditIcon/></Link></h1>
-                <i>({localStorage.getItem('Type')})</i>
-              </div>
-             
-              <div className="hk">
-                <div>
-                  <img
-                    src={localStorage.getItem('ProfilePicUrl')}
-                    alt="profile-Pic-Admin"
-                    className="imagehk"
-                  />
-                </div>
+          <div className="orders">
+            {selectedItem === '/profile' && (
+                <div className="/profile">
+                  <div>
+                    <h1 className="upperhk">{localStorage.getItem('Name')}  <Link to="/update"><EditIcon/></Link></h1>
+                    <i className='typehk'>({localStorage.getItem('Type')})</i>
+                  </div>
 
-                <div className="divhk">
-                  <h3 className="nhk">Details:</h3>
-                  <h5 className="uphk">Email :</h5>
-                  <h5 className="downhk">{localStorage.getItem('Email')}</h5>
-                  <h5 className="uphk">Contact :</h5>
-                  <h5 className="downhk">{localStorage.getItem('Phone')}</h5>
-
-                  <h5 className="uphk">Address :</h5>
-                  <h5 className="downhk">{localStorage.getItem('Address')}</h5>
-
-                  <div className="iconhk"></div>
-                </div>
-              </div>
-            </div>
-          )}
-          {selectedItem === '/myProducts' && (
-            <>
-              <div className="order-content">
-                <h5>item</h5>
-                <h5>price</h5>
-                <h5>Stocks</h5>
-                <span></span>
-              </div>
-
-              {prod.map((prod) => (
-                <Wrapper>
-                  <div className="title">
-                    <a href={`/products/${prod._id}`}>
-                      <img src={prod.image} className="img-order" alt="" />
-                    </a>
+                  <div className="hk">
                     <div>
-                      <h5 className="name">{prod.name}</h5>
+                      <img
+                          src={"https://localshopper.azurewebsites.net/"+localStorage.getItem('ProfilePicUrl')}
+                          alt="profile-Pic-Admin"
+                          className="imagehk"
+                      />
+                    </div>
+
+                    <div className="divhk">
+                      <h3 className="nhk">Details:</h3>
+                      <h5 className="uphk">Email :</h5>
+                      <h5 className="downhk">{localStorage.getItem('Email')}</h5>
+                      <h5 className="uphk">Contact :</h5>
+                      <h5 className="downhk">{localStorage.getItem('Phone')}</h5>
+
+                      <h5 className="uphk">Address :</h5>
+                      <h5 className="downhk">{localStorage.getItem('Address')}</h5>
+
+                      <div className="iconhk"></div>
                     </div>
                   </div>
-                  <h5 className="price">{prod.price}</h5>
-                  <h5 className="price">{prod.stock}</h5>
-                  <button
-                    type="button"
-                    className="remove-btn"
-                    onClick={() => handleDelete(prod._id)}
-                  >
-                    <FaTrash />
-                  </button>
-                </Wrapper>
-              ))}
-            </>
-          )}
+                </div>
+            )}
+            {selectedItem === '/myProducts' && (
+                <>
+                  <div className="order-content" >
+                    <h5>item</h5>
+                    <h5>price</h5>
+                    <h5>Stocks</h5>
+                    <span></span>
+                  </div>
 
-          {selectedItem === '/ordersAll' && (
-            <div>
-              <h1>Your Orders</h1>
-              <div className="product-list-container">
-                <table className="product-list">
-                  <thead>
-                    <tr>
-                      <th></th>
-                      <th>product</th>
-                      <th>Price</th>
-                      <th>Amount</th>
-                      <th>User</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data.map((product) => (
-                      <tr key={product._id} className="product-list-item">
-                        <td>
-                          <div className="product-image-container">
-                            <img
-                              src={product.image}
-                              alt={product.name}
-                              className="product-image"
-                            />
+                  {prod.map((prod) => (
+                      <Wrapper>
+                        <div className="title">
+                          <a href={`/products/${prod._id}`}>
+                            <img src={prod.image} className="img-order" alt="" />
+                          </a>
+                          <div>
+                            <h5 className="name">{prod.name}</h5>
                           </div>
-                        </td>
-                        <td>{product.name}</td>
-                        <td>Rs.{product.price}</td>
-                        <td>{product.amount}</td>
-                        <td>{product.buyerEmail}</td>
-                        <select
-                          value={product.status}
-                          onChange={(e) => {
-                            product.status = e.target.value;
-                            handleStatusChange(
-                              product.oid,
-                              product._id,
-                              e.target.value
-                            );
-                          }}
+                        </div>
+                        <h5 className="price">{prod.price}</h5>
+                        <h5 className="price">{prod.stock}</h5>
+                        <button
+                            type="button"
+                            className="remove-btn"
+                            onClick={() => handleDelete(prod._id)}
                         >
-                          <option value="Pending">Pending</option>
-                          <option value="Shipped">Shipped</option>
-                          <option value="Delivered">Delivered</option>
-                          <option value="Cancelled">Cancelled</option>
-                        </select>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
+                          <FaTrash />
+                        </button>
+                      </Wrapper>
+                  ))}
+                </>
+            )}
 
-          {selectedItem === '/support' && (
-            <div className="orders ">
-              <Support>
-                <header>
-                  <h1>Support Center</h1>
-                </header>
-                <main>
-                  <section>
-                    <h2>How can we help?</h2>
-                    <p>
-                      Our support team is available to assist you with any
-                      questions or issues you may have.
-                    </p>
-                    <p>
-                      Please email us at{' '}
-                      <a href="mailto:support@mycompany.com">
-                        support@mycompany.com
-                      </a>{' '}
-                      and we'll get back to you as soon as possible.
-                    </p>
-                  </section>
-                  <section>
-                    <h2>FAQs</h2>
-                    <h3>How do I create an account?</h3>
-                    <p>
-                      To create an account, click the "Sign Up" button at the
-                      top of the page and follow the prompts to enter your
-                      information.
-                    </p>
-                    <h3>How do I reset my password?</h3>
-                    <p>
-                      To reset your password, click the "Forgot Password" link
-                      on the login page and follow the prompts to reset your
-                      password.
-                    </p>
-                    <h3>What payment methods do you accept?</h3>
-                    <p>We accept all major credit cards as well as PayPal.</p>
-                  </section>
-                  <section>
-                    <h2>Contact Us</h2>
-                    <p>
-                      If you have any questions or concerns, please do not
-                      hesitate to reach out to us. Our support team is available
-                      24/7 to assist you.
-                    </p>
-                    <ul>
-                    <li>
-                        Email:{' '}
-                        <a href="mailto:support@mycompany.com">
-                          varun.g20@iiits.in
-                        </a>
-                      </li>
-                      <li>Phone: +918824094063</li>
-                      
-                    </ul>
-                  </section>
-                </main>
-                
-            </Support>
-            </div>
-          )}
+            {selectedItem === '/ordersAll' && (
+                <div>
+                  <h1>Your Orders</h1>
+                  <div className="product-list-container">
+                    <table className="product-list">
+                      <thead>
+                      <tr>
+                        <th></th>
+                        <th>product</th>
+                        <th>Price</th>
+                        <th>Amount</th>
+                        <th>User</th>
+                        <th>Status</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {data.map((product) => (
+                          <tr key={product._id} className="product-list-item">
+                            <td>
+                              <div className="product-image-container">
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className="product-image"
+                                />
+                              </div>
+                            </td>
+                            <td>{product.name}</td>
+                            <td>Rs.{product.price}</td>
+                            <td>{product.amount}</td>
+                            <td>{product.buyerEmail}</td>
+                            <select
+                                value={product.status}
+                                onChange={(e) => {
+                                  product.status = e.target.value;
+                                  handleStatusChange(
+                                      product.oid,
+                                      product._id,
+                                      e.target.value
+                                  );
+                                }}
+                            >
+                              <option value="Pending">Pending</option>
+                              <option value="Shipped">Shipped</option>
+                              <option value="Delivered">Delivered</option>
+                              <option value="Cancelled">Cancelled</option>
+                            </select>
+                          </tr>
+                      ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            )}
+
+            {selectedItem === '/support' && (
+                <div className="orders ">
+                  <Support>
+                    <main>
+                      <section>
+                        <h2>FAQs</h2>
+                        <h3>How do I create an account?</h3>
+                        <p>
+                          To create an account, click the "Sign Up" button at the
+                          top of the page and follow the prompts to enter your
+                          information.
+                        </p>
+                        <h3>How do I reset my password?</h3>
+                        <p>
+                          To reset your password, click the "Forgot Password" link
+                          on the login page and follow the prompts to reset your
+                          password.
+                        </p>
+                        <h3>What payment methods do you accept?</h3>
+                        <p>We accept all major credit cards as well as PayPal.</p>
+                      </section>
+
+                    </main>
+
+                  </Support>
+                </div>
+            )}
+          </div>
         </div>
-      </div>
     );
   } else {
     return (
-      <div className="divid">
-        <div className="sidebar">
-          <div className="image">
-            <div className="imghk">
-              <img
-                src={localStorage.getItem('ProfilePicUrl')}
-                alt="Profile Pic"
-                className="imghk"
-              />
+        <div className="divid">
+          <div className="sidebar">
+            <div className="image">
+              <div className="imghk">
+                <img
+                    src={"https://localshopper.azurewebsites.net/"+localStorage.getItem('ProfilePicUrl')}
+                    alt="Profile Pic"
+                    className="imghk"
+                />
+              </div>
+              <div className="top-heading">
+                {localStorage.getItem('loggedIn') === null
+                    ? 'new user'
+                    : localStorage.getItem('Name')}
+              </div>
             </div>
-            <div className="top-heading">
-              {localStorage.getItem('loggedIn') === null
-                ? 'new user'
-                : localStorage.getItem('Name')}
-            </div>
+            <hr className="hr" />
+            <ul className="sidebar-list">
+              {SideData.map((val, key) => (
+                  <li
+                      id={
+                        window.location.pathname === val.link ? 'active row' : 'row'
+                      }
+                      className="row"
+                      key={key}
+                      onClick={() => handleItemClick(val.link)}
+                  >
+                    <div id="icon">{val.icon}</div>
+                    <div id="title">{val.title}</div>
+                  </li>
+              ))}
+            </ul>
           </div>
-          <hr className="hr" />
-          <ul className="sidebar-list">
-            {SideData.map((val, key) => (
-              <li
-                id={
-                  window.location.pathname === val.link ? 'active row' : 'row'
-                }
-                className="row"
-                key={key}
-                onClick={() => handleItemClick(val.link)}
-              >
-                <div id="icon">{val.icon}</div>
-                <div id="title">{val.title}</div>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="orders">
-          {selectedItem === '/profile' && (
-            <div className="/profile">
-              <div>
-              <h1 className="upperhk">{localStorage.getItem('Name')}  <Link to="/update"><EditIcon/></Link></h1>                <i>({localStorage.getItem('Type')})</i>
-              </div>
-
-              <div className="hk">
-                <div>
-                  <img
-                    src={localStorage.getItem('ProfilePicUrl')}
-                    alt="profile-Pic-Admin"
-                    className="imagehk"
-                  />
-                </div>
-
-                <div className="divhk">
-                  <h3 className="nhk">Details:</h3>
-                  <h5 className="uphk">Email :</h5>
-                  <h5 className="downhk">{localStorage.getItem('Email')}</h5>
-                  <h5 className="uphk">Contact :</h5>
-                  <h5 className="downhk">{localStorage.getItem('Phone')}</h5>
-
-                  <h5 className="uphk">Address :</h5>
-                  <h5 className="downhk">{localStorage.getItem('Address')}</h5>
-
-                  <div className="iconhk"></div>
-                </div>
-              </div>
-            </div>
-          )}
-          {selectedItem === '/orders' && (
-            <>
-              <div className="order-content">
-                <h5>product</h5>
-                <h5>price</h5>
-                <h5>quantity</h5>
-                <h5>status</h5>
-              </div>
-
-              {data.map((prod) => (
-                <Wrapper>
-                  <div className="title">
-                    <a href={`/products/${prod._id}`}>
-                      <img src={prod.image} className="img-order" alt="" />
-                    </a>
-                    <div>
-                      <h5 className="name">{prod.name}</h5>
-                    </div>
+          <div className="orders">
+            {selectedItem === '/profile' && (
+                <div className="/profile">
+                  <div>
+                    <h1 className="upperhk">{localStorage.getItem('Name')}  <Link to="/update"><EditIcon/></Link></h1>
+                    <i className='typehk'>({localStorage.getItem('Type')})</i>
                   </div>
 
-                  <h5 className="price">{prod.price}</h5>
-                  <h5 className="price">{prod.amount}</h5>
-                  <h5 className="price">{prod.status}</h5>
-                </Wrapper>
-              ))}
-            </>
-            // <div>
-            //   <h1>Your Orders</h1>
-            //   <div className="product-list-container">
-            //     <table className="product-list">
-            //       <thead>
-            //         <tr>
-            //           <th></th>
-            //           <th>product</th>
-            //           <th>Price</th>
-            //           <th>Amount</th>
-            //           <th>User</th>
-            //           <th>Status</th>
-            //         </tr>
-            //       </thead>
-            //       <tbody>
-            //         {data.map((product) => (
-            //           <tr key={product._id} className="product-list-item">
-            //             <td>
-            //               <div className="product-image-container">
-            //                 <img
-            //                   src={product.image}
-            //                   alt={product.name}
-            //                   className="product-image"
-            //                 />
-            //               </div>
-            //             </td>
-            //             <td>{product.name}</td>
-            //             <td>Rs.{product.price}</td>
-            //             <td>{product.amount}</td>
-            //             <td>{product.buyerEmail}</td>
-            //             <td>{product.status}</td>
-            //           </tr>
-            //         ))}
-            //       </tbody>
-            //     </table>
-            //   </div>
-            // </div>
-          )}
+                  <div className="hk">
+                    <div>
+                      <img
+                          src={"https://localshopper.azurewebsites.net/"+localStorage.getItem('ProfilePicUrl')}
+                              alt="profile-Pic-Admin"
+                          className="imagehk"
+                      />
+                    </div>
 
-          {selectedItem === '/support' && (
-            <div className="orders">
-              <Support>
-                <header>
-                  <h1>Support Center</h1>
-                </header>
-                <main>
-                  <section>
-                    <h2>How can we help?</h2>
-                    <p>
-                      Our support team is available to assist you with any
-                      questions or issues you may have.
-                    </p>
-                    <p>
-                      Please email us at{' '}
-                      <a href="mailto:support@mycompany.com">
-                        support@mycompany.com
-                      </a>{' '}
-                      and we'll get back to you as soon as possible.
-                    </p>
-                  </section>
-                  <section>
-                    <h2>FAQs</h2>
-                    <h3>How do I create an account?</h3>
-                    <p>
-                      To create an account, click the "Sign Up" button at the
-                      top of the page and follow the prompts to enter your
-                      information.
-                    </p>
-                    <h3>How do I reset my password?</h3>
-                    <p>
-                      To reset your password, click the "Forgot Password" link
-                      on the login page and follow the prompts to reset your
-                      password.
-                    </p>
-                    <h3>What payment methods do you accept?</h3>
-                    <p>We accept all major credit cards.</p>
-                  </section>
-                  <section>
-                    <h2>Contact Us</h2>
-                    <p>
-                      If you have any questions or concerns, please do not
-                      hesitate to reach out to us. Our support team is available
-                      24/7 to assist you.
-                    </p>
-                    <ul>
-                      <li>
-                        Email:{' '}
-                        <a href="mailto:support@mycompany.com">
-                          varun.g20@iiits.in
-                        </a>
-                      </li>
-                      <li>Phone: +918824094063</li>
-                      
-                    </ul>
-                  </section>
-                </main>
-                
-              </Support>
-            </div>
-          )}
+                    <div className="divhk">
+                      <h3 className="nhk">Details:</h3>
+                      <h5 className="uphk">Email :</h5>
+                      <h5 className="downhk">{localStorage.getItem('Email')}</h5>
+                      <h5 className="uphk">Contact :</h5>
+                      <h5 className="downhk">{localStorage.getItem('Phone')}</h5>
+
+                      <h5 className="uphk">Address :</h5>
+                      <h5 className="downhk">{localStorage.getItem('Address')}</h5>
+
+                      <div className="iconhk"></div>
+                    </div>
+                  </div>
+                </div>
+            )}
+            {selectedItem === '/orders' && (
+                <div className="order-profile-content">
+                  <div className="order-content">
+                    <h5>product</h5>
+                    <h5>price</h5>
+                    <h5>quantity</h5>
+                    <h5>status</h5>
+                  </div>
+
+                  {data.map((prod) => (
+                      <Wrapper>
+                        <div className="title">
+                          <a href={`/products/${prod._id}`}>
+                            <img src={prod.image} className="img-order"  alt="" />
+                          </a>
+                          <div>
+                            <h5 className="name">{prod.name}</h5>
+                          </div>
+                        </div>
+
+                        <h5 className="price">{prod.price}</h5>
+                        <h5 className="price">{prod.amount}</h5>
+                        <h5 className="price">{prod.status}</h5>
+                      </Wrapper>
+                  ))}
+                </div>
+            )}
+
+            {selectedItem === '/support' && (
+                <div className="orders">
+                  <Support>
+                    <header>
+                      <h1>Support Center</h1>
+                    </header>
+                    <main>
+                      <section>
+                        <h2>FAQs</h2>
+                        <h3>How do I create an account?</h3>
+                        <p>
+                          To create an account, click the "Sign Up" button at the
+                          top of the page and follow the prompts to enter your
+                          information.
+                        </p>
+                        <h3>How do I change my credentials?</h3>
+                        <p>
+                          To reset your credentials, click the "pencil" link
+                          on the login page and follow the prompts to reset your
+                          credentials.
+                        </p>
+                        <h3>What payment methods do you accept?</h3>
+                        <p>We accept all major credit cards.</p>
+                      </section>
+
+                    </main>
+
+                  </Support>
+                </div>
+            )}
+          </div>
         </div>
-      </div>
     );
   }
 }
@@ -655,56 +555,56 @@ const Wrapper = styled.article`
 
 const Support = styled.article`
 
-width:150%;
+  width:130%;
+  top:50px;
 
-h1 {
-  font-size: 2rem;
-  margin: 0;
-}
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+  }
 
-main {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
 
-section {
-  background-color: #fff;
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+  section {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
-h3 {
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-}
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
-p {
-  margin-bottom: 1rem;
-}
+  p {
+    margin-bottom: 1rem;
+  }
 
-a {
-  color: #333;
-  text-decoration: none;
-}
+  a {
+    color: #333;
+    text-decoration: none;
+  }
 
-a:hover {
-  text-decoration: underline;
-}
+  a:hover {
+    text-decoration: underline;
+  }
 
-ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
 
 `

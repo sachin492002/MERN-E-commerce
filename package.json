@@ -2,6 +2,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "devStart": "nodemon server.js",
+    "test": "mocha --timeout 5000",
     "build": "npm i",
     "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd frontend && npm install && npm run build",
     "docker-build-webapp": "npm start"
@@ -27,9 +28,12 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.21"
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.21",
+    "sinon": "^15.0.4",
+    "sinon-chai": "^3.7.0"
   },
-
   "keywords": [],
   "author": "",
   "license": "ISC",

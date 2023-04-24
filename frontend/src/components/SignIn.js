@@ -75,6 +75,11 @@ export default function SignIn({handleDataUser}) {
     })
       .then((response) => response.json())
       .then((resData) => {
+        if(resData.message==="Invalid password")
+        {
+          alert("Invalid Password");
+          history.push("/login");
+        }
         if(resData.user.blocked===true)
         {
           alert("You are Blocked")
@@ -106,7 +111,7 @@ export default function SignIn({handleDataUser}) {
       .catch((error) => {
         // Handle authentication error
         console.log(error.message);
-        console.log("Error in Authentication");
+        alert("Error in Authentication");
       });
 
   };

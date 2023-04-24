@@ -17,7 +17,7 @@ const Wrapper = styled.footer`
   
   height: 4.5rem;
   display: flex;
-  margin-top: 250px;
+  
   flex-direction: column;
   justify-content: center;
   align-items: center;

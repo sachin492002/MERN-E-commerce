@@ -7,7 +7,7 @@ const client = require("./client.js");
 exports.getBlockedUsers = (req, res, next) => {
   return UserModal.find({ blocked: true }).then((user)=>{
     console.log(user);
-    if(!user)
+    if(user.length===0)
     return res.status(401).json({ message: "No user exist"});
     else
     return res.status(200).json({ message: "Logged in", user: user })

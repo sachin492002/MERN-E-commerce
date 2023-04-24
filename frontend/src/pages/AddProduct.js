@@ -82,15 +82,6 @@ const AddProduct = () => {
               aria-expanded
             />
           </div>
-          {/* <div className="form-item">
-            <label className="labelid">Image</label>
-            <input
-              name="image"
-              value={inputs.image}
-              required
-              onChange={handleChange}
-            />
-          </div> */}
 
           <div onChange={handleChange} className="field padding-bottom--24">
           <label>Upload Product Image</label>
@@ -102,23 +93,17 @@ const AddProduct = () => {
           />
           </div>
 
-          {/* <div
-            className="field padding-bottom--24"
-            onChange={handleChange}
-          >
-            <label>Upload profile picture</label>
-            <input type="file" name="profile-pic" required />
-          </div> */}
+
           
           <div className="form-item">
         <label className="labelid">Category</label>
         <select name="category" value={inputs.category} onChange={handleChange}>
           <option value="">Select a category</option>
-          <option value="Dairy">Dairy</option>
-          <option value="Fruits">Fruits</option>
-          <option value="Staples">Staples</option>
-          <option value="Cloth">Cloth</option>
-          <option value="Electronics">Electronics</option>
+          <option value="dairy">Dairy</option>
+          <option value="fruits">Fruits</option>
+          <option value="staples">Staples</option>
+          <option value="cloth">Cloth</option>
+          <option value="electronics">Electronics</option>
           </select>
          </div>
 
@@ -149,12 +134,14 @@ const AddProduct = () => {
 };
 
 const Wrapper = styled.section`
-  .headingid {
-    color: black;
-    align-items: center;
-    justify-content: space-between;
-    padding: 25px;
-    margin: 20px 50px;
+  
+    .headingid {
+      color: black;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px;
+      margin: 20px 50px;
+      width: 100%;
   }
   .add {
     margin-left: 25%;

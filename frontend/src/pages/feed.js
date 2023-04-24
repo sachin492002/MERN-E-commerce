@@ -67,7 +67,7 @@ const Feed = ({handlefeeds}) => {
     null
     )
     else
-    return (<Confirm comp='message'/>)
+    return (null)
     
 };
 

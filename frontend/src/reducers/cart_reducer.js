@@ -24,7 +24,7 @@ const cart_reducer = (state, action) => {
       const newItem = {
         id: id ,
         name: product.name,
-        status: "In-transit",
+        status: "Ordered",
         seller:product.seller,
         amount,
         image: product.image,

@@ -82,7 +82,7 @@ const SingleProductPage = () => {
                 stock > 0 && <AddToCart product={product} />
                 :
                 <button className="submit-btn">
-                  <Link to="/login"> Login to Buy </Link>
+                  <Link to="/login"  className="link-hk"> Login to Buy </Link>
                 </button>
                  
                 }
@@ -128,6 +128,10 @@ const Wrapper = styled.main`
   .submit-btn {
     border-top-right-radius: var(--radius);
     border-bottom-right-radius: var(--radius);
+    padding:10px;
+    border:white;
+    color:white;
+    margin-right:5px;
   }
   .submit-btn {
     border-top-right-radius: 10px;
@@ -143,6 +147,9 @@ const Wrapper = styled.main`
   }
   .submit-btn:hover {
     color: var(--clr-white);
+  }
+  .link-hk{
+    color:white;
   }
 
   @media (min-width: 992px) {

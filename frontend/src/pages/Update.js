@@ -48,8 +48,9 @@ const UpdatePage = ({handleDataUser}) => {
         localStorage.setItem('Phone', updatedUser.result.mobile);
         localStorage.setItem('Address', updatedUser.result.address);
         localStorage.setItem('Pincode', updatedUser.result.pincode);
-      } else {
-        throw new Error('Failed to update user');
+      }
+    else {
+        alert("Invalid Password");
       }
     } catch (error) {
       console.log(error);

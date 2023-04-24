@@ -52,6 +52,9 @@ export default function SignUp() {
                 alert("Logged In Successfully");
                 history.push('/admin');
               }
+              else{
+                alert("Your Admin Password Credentials are wrong")
+              }
             }
 
               else{

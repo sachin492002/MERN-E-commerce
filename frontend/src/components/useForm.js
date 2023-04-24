@@ -175,6 +175,7 @@ const useForm = (callback) => {
     })
       .then((res) => res.json())
       .then((data) => console.log(data));
+    alert("user registered successfully");
     history.push("/");
   };
 

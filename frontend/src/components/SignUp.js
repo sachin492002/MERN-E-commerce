@@ -119,7 +119,7 @@ export default function SignUp() {
                     onChange={handleChange}
                   >
                     <label>Upload profile picture</label>
-                    <input type="file" name="profile-pic" required />
+                    <input type="file" name="profile-pic" required/>
                   </div>
 
                   <div className="field padding-bottom--24">
