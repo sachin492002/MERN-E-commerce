@@ -21,7 +21,7 @@ const Feed = ({handlefeeds}) => {
     const handleSubmit = (event) => {
       handlefeeds()
         setSubmitted(true)
-        return fetch('http://localhost:3001/feeds', {
+        return fetch('/api/feeds', {
             method: 'POST',
             body: JSON.stringify(inputs),
             headers: {

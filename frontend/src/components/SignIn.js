@@ -66,7 +66,7 @@ export default function SignIn({handleDataUser}) {
     console.log(username);
     console.log(password);
 
-    fetch("http://localhost:3001/user", {
+    fetch("/api/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,9 +97,8 @@ export default function SignIn({handleDataUser}) {
           localStorage.setItem("Address", resData.user.address);
           localStorage.setItem("Phone", resData.user.mobile);
           localStorage.setItem("Type", resData.user.type);
-          localStorage.setItem("ProfilePicUrl", `http://localhost:3001/${resData.user.profilePicUrl}`)
+          localStorage.setItem("ProfilePicUrl",resData.user.profilePicUrl);
           localStorage.setItem("loggedIn", "true");
-
           alert("Logged In Successfully");
           history.push("/dashboard");
           return;

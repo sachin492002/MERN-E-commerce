@@ -24,7 +24,7 @@ export default function SupportAdmin() {
   const [data,setData]=useState([]);
   
   useEffect(()=>{
-    axios.get('http://localhost:3001/orders')
+    axios.get('/api/orders')
         .then(response => {
             console.log(response)
             setData(response.data)

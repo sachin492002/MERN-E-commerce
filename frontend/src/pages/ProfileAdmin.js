@@ -10,7 +10,7 @@ export default function ProfileAdmin() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/orders').then((response) => {
+    axios.get('/api/orders').then((response) => {
       console.log(response);
       setData(response.data);
     });

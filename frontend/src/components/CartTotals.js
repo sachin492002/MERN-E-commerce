@@ -20,7 +20,7 @@ const CartTotals = () => {
       // console.log();
       
       const setOrder = () => { 
-        return fetch('http://localhost:3001/orders', {
+        return fetch('/api/orders', {
           method: 'POST',
           body: JSON.stringify(inputs),
           headers: {

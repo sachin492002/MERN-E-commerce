@@ -13,7 +13,7 @@ export default function SellerItems() {
   function loadData(event) {
     //fetch daata from blocked
     event.preventDefault();
-    fetch("http://localhost:3001/load-items-user", {
+    fetch("/api/load-items-user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

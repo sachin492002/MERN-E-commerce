@@ -169,7 +169,7 @@ const useForm = (callback) => {
       formData.append(key.toString(), values[key]);
     }
 
-    fetch("http://localhost:3001/users", {
+    fetch("/api/users", {
       method: "POST",
       body: formData,
     })

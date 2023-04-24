@@ -12,7 +12,7 @@ export default function Registered() {
 
   function loadData() {
     //fetch daata from blocked
-    fetch("http://localhost:3001/usersAll")
+    fetch("/api/usersAll")
       .then((response) => response.json())
       .then((data) => {
         console.log(data)

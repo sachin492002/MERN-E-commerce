@@ -31,7 +31,7 @@ const AddProduct = () => {
     for (const key in inputs) {
       formData.append(key.toString(), inputs[key]);
     }
-    fetch("http://localhost:3001/product", {
+    fetch("/api/product", {
       method: "POST",
       body: formData,
     })

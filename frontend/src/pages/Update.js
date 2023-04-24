@@ -23,7 +23,7 @@ const UpdatePage = ({handleDataUser}) => {
     console.log(formData);
     // Send updated user data to backend
     try {
-      const response = await fetch('http://localhost:3001/userUpdate', {
+      const response = await fetch('/api/userUpdate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

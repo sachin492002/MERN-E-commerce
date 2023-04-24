@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-const port = 3001 || process.env.PORT;
+const port =  process.env.PORT || 80;
 const adminRoutes = require("./routes/adminRoutes")
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
@@ -18,22 +18,7 @@ const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-const options = {
-    definition: {
-        openapi: '3.0.0',
-        info: {
-            title: 'Shop API',
-            version: '1.3.0',
-            description: 'A simple Express Shop API',
-        },
-        servers: [  
-            {
-                url: 'http://localhost:3001',
-            },
-        ],
-    },
-    apis: ['./controller/*.js'],
-};
+
 
 const swaggerjsdoc =   YAML.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerjsdoc))
@@ -69,12 +54,21 @@ mongoose.connection.on("connected", () => {
   console.log("Connected to database mongodb database");
 });
 
-// Create a write stream to a file
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, "access.log"),
   { flags: "a" }
 );
-
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "frontend", "build")));
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, "frontend", "build", "index.html"))
+    });
+    console.log("Running production");
+} else {
+    app.get('/', (req, res) => {
+        res.send("Server is working 😇")
+    });
+}
 // Add Morgan logs
 app.use(morgan("combined", { stream: accessLogStream }));
 
@@ -109,11 +103,11 @@ app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use("/uploads", express.static(path.join(__dirname, "../shared/uploads")));
 
-app.use(adminRoutes);
-app.use(userRoutes);
-app.use(productRoutes);
-app.use(feedsRoutes);
-app.use(ordersRoutes);
+app.use('/api',adminRoutes);
+app.use('/api',userRoutes);
+app.use('/api',productRoutes);
+app.use('/api',feedsRoutes);
+app.use('/api',ordersRoutes);
 
 app.listen(port, () => {
   console.log("Server started at port: " + port);

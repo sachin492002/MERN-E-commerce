@@ -15,7 +15,7 @@ const Feeds = () => {
       setcount(count+1);
     };
     useEffect(()=>{
-        axios.get('http://localhost:3001/feeds')
+        axios.get('/api/feeds')
             .then(response => {
                 console.log(response)
                 setData(response.data)

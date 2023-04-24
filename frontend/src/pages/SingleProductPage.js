@@ -21,7 +21,7 @@ const SingleProductPage = () => {
   function removeItem(event) {
     event.preventDefault();
     // console.log(sku);
-    fetch("http://localhost:3001/remove-item", {
+    fetch("/api/remove-item", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

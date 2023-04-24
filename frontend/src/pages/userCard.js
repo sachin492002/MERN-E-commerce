@@ -3,7 +3,7 @@ import './Card.css'
 export default function UserCard(props) {
 
   function block(item){
-    return fetch('http://localhost:3001/blocked', {
+    return fetch('/api/blocked', {
         method: 'POST',
         body: JSON.stringify(props.item),
         headers: {

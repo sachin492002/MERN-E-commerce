@@ -18,14 +18,14 @@ export default function Dashboard() {
     if (localStorage.getItem('Type') === 'Seller') {
       axios
         .get(
-          `http://localhost:3001/orders/sell/${localStorage.getItem('Email')}`
+          `/api/orders/sell/${localStorage.getItem('Email')}`
         )
         .then((response) => {
           setData(response.data);
         });
       axios
         .get(
-          `http://localhost:3001/products/seller/${localStorage.getItem(
+          `/api/products/seller/${localStorage.getItem(
             'Email'
           )}`
         )
@@ -40,7 +40,7 @@ export default function Dashboard() {
   function handleDelete(id) {
     setProd(prod.filter((prod) => prod._id !== id));
     console.log(prod);
-    fetch('http://localhost:3001/products/seller/delete', {
+    fetch('/api/products/seller/delete', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (localStorage.getItem('Type') === 'Buyer') {
       axios
-        .get(`http://localhost:3001/orders/${localStorage.getItem('Email')}`)
+        .get(`/api/orders/${localStorage.getItem('Email')}`)
         .then((response) => {
           console.log(response.data);
           setData(response.data);
@@ -70,7 +70,7 @@ export default function Dashboard() {
     });
     setData(updatedData);
     axios
-      .put(`http://localhost:3001/orders/${oid}/items/${pid}/status/`, {
+      .put(`/api/orders/${oid}/items/${pid}/status/`, {
         status: newStatus,
       })
       .then((response) => {
