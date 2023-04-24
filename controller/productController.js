@@ -65,11 +65,8 @@ exports.postProduct = (req, res) => {
     price: req.body.price,
     description: req.body.description,
     image: req.file?.path
-    .toString()
-    .replace(/\\/g, "/")
-    .split("shared/")
-    .slice(1)
-    .join(""),
+        .toString()
+        .replace(/\\/g, "/"),
     category: req.body.category,
     company: req.body.company,
     seller: req.body.seller,
@@ -88,7 +85,7 @@ exports.postProduct = (req, res) => {
         .json({ message: "Product has been added", result: result })
     )
     .catch((err) => {
-      res.status(403).json({ message: "Something went wrong" });
+      res.status(403).json({ message: err });
     });
 };
 
