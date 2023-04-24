@@ -22,7 +22,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
 app.use(cors())
-const swaggerjsdoc =   YAML.load('./swagger.yaml')
+const swaggerjsdoc   =   YAML.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerjsdoc))
 
 mongoose.connect("mongodb+srv://sachinm20:cp300464@cluster0.nkes8uj.mongodb.net/ShopDb?retryWrites=true&w=majority", {
