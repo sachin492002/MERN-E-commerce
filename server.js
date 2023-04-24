@@ -23,26 +23,6 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const swaggerjsdoc =   YAML.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerjsdoc))
 
-// const uri = "mongodb+srv://sachin:<cp300464>@cluster0.7wvu0.mongodb.net/?retryWrites=true&w=majority";
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// client.connect((err) => {
-//   if (err) {
-//     console.log(err);
-//     return;
-//   }
-//   console.log('Connected to MongoDB cluster');
-//   // Use the client object to interact with the database
-//   const db = client.db();
-//   // ...
-// });
-//connect to mongodb
 mongoose.connect("mongodb+srv://sachinm20:cp300464@cluster0.nkes8uj.mongodb.net/ShopDb?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true,

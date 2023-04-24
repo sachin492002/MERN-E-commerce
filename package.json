@@ -2,7 +2,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "devStart": "nodemon server.js",
-    "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd frontend && npm install react-scripts && npm run build --openssl-legacy-provider",
+    "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd frontend && npm install && npm run build",
     "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm start\""
   },
   "name": "backend",
