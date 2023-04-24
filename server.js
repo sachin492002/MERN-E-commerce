@@ -21,7 +21,6 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
 
-// const serverUrl = process.env.SERVER_URL
 app.use(cors())
 const swaggerjsdoc =   YAML.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerjsdoc))
@@ -35,17 +34,7 @@ mongoose.connection.on("connected", () => {
   console.log("Connected to database mongodb database");
 });
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client", "build")));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"))
-  });
-  console.log("Running production");
-} else {
-  app.get('/', (req, res) => {
-    res.send("Server is working 😇")
-  });
-}
+
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, "access.log"),
   { flags: "a" }
@@ -60,10 +49,7 @@ app.use("/images", (req, res, next) => {
   next();
 }, express.static("images"));
 
-// app.get("*", (req, res) => { //our GET route needs to point to the index.html in our build
-//   res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-// });
-// app.use(express.static('./frontend/build'));
+
 app.get("/image", (req, res) => {
   res.sendFile(__dirname + `/images${req.path}`);
 });
