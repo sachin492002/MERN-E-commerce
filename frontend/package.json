@@ -32,7 +32,6 @@
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
-  "proxy": "http://localhost:80",
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts --openssl-legacy-provider build",

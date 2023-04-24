@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const port =  process.env.PORT || 80;
+
 const adminRoutes = require("./routes/adminRoutes")
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
@@ -19,7 +20,9 @@ const YAML = require('yamljs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 
-
+const clientUrl = process.env.CLIENT_URL
+// const serverUrl = process.env.SERVER_URL
+app.use(cors({ origin: clientUrl }))
 const swaggerjsdoc =   YAML.load('./swagger.yaml')
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerjsdoc))
 
@@ -73,8 +76,7 @@ mongoose.connection.on("error", (err) => {
   }
 });
 
-//adding middleware - cors
-app.use(cors());
+
 
 //body - parser
 app.use(bodyParser.json());
