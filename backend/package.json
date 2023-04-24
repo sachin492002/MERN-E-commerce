@@ -2,6 +2,7 @@
   "scripts": {
     "start": "nodemon server.js",
     "devStart": "nodemon server.js",
+    "build": "npm i",
     "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd frontend && npm install && npm run build",
     "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm start\""
   },
@@ -28,6 +29,7 @@
   "devDependencies": {
     "nodemon": "^2.0.21"
   },
+  "proxy": "http://localhost:80",
   "keywords": [],
   "author": "",
   "license": "ISC",
