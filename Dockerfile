@@ -9,5 +9,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-
 CMD ["npm", "run", "docker-build-webapp"]
