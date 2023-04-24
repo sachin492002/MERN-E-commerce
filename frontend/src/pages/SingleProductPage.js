@@ -21,7 +21,7 @@ const SingleProductPage = () => {
   function removeItem(event) {
     event.preventDefault();
     // console.log(sku);
-    fetch("/api/remove-item", {
+    fetch("https://localshopper.azurewebsites.net/api/remove-item", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ export default function Admin() {
   const [blocked, setBlocked] = useState([]);
   const [selectedItem, setSelectedItem] = useState('');
   useEffect(() => {
-    axios.get('/api/usersBlocked').then((response) => {
+    axios.get('https://localshopper.azurewebsites.net/api/usersBlocked').then((response) => {
       console.log("hi "+response.data.user);
       setBlocked(response.data.user);
     });
@@ -22,7 +22,7 @@ export default function Admin() {
     setSelectedItem(link);
   };
   useEffect(() => {
-    axios.get('/api/usersAll').then((response) => {
+    axios.get('https://localshopper.azurewebsites.net/api/usersAll').then((response) => {
       console.log(response);
       setData(response.data);
     });
@@ -33,7 +33,7 @@ export default function Admin() {
     setData(data.filter(user => user.email !== email));
     setBlocked([...blocked, data.find(user => user.email === email)]);
 
-    fetch('/api/block-user', {
+    fetch('https://localshopper.azurewebsites.net/api/block-user', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -46,7 +46,7 @@ export default function Admin() {
     setBlocked(blocked.filter(user => user.email !== email));
     setData([...data, blocked.find(user => user.email === email)]);
     console.log('Unblocked');
-    fetch('/api/unblock-user', {
+    fetch('https://localshopper.azurewebsites.net/api/unblock-user', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ export default function Admin() {
   }
   function handleDelete(email) {
     setData(data.filter(user => user.email !== email));
-    fetch('/api/delete-user', {
+    fetch('https://localshopper.azurewebsites.net/api/delete-user', {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'

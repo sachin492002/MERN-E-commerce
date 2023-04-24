@@ -41,7 +41,7 @@
     "netlify": "netlify dev",
     "dev": "netlify dev"
   },
-  "proxy": "https://shopperapi.onrender.com",
+  "proxy": "https://localshopper.azurewebsites.net",
   "eslintConfig": {
     "extends": [
       "react-app",

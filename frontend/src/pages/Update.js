@@ -23,7 +23,7 @@ const UpdatePage = ({handleDataUser}) => {
     console.log(formData);
     // Send updated user data to backend
     try {
-      const response = await fetch('/api/userUpdate', {
+      const response = await fetch('https://localshopper.azurewebsites.net/api/userUpdate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,15 +34,15 @@ const UpdatePage = ({handleDataUser}) => {
         const updatedUser = await response.json();
         console.log('User updated:', updatedUser.result.email);
         // TODO: Add logic to display success message to user
-        // handleDataUser({
-        //   Name:updatedUser.name,
-        //   Email:updatedUser.email,
-        //   Address:updatedUser.address,
-        //   Phone:updatedUser.mobile,
-        //   Type:updatedUser.type,
-        //   ProfilePicUrl:updatedUser.profilePicUrl,
-        //   loggedIn:true
-        // });
+        handleDataUser({
+          Name:updatedUser.name,
+          Email:updatedUser.email,
+          Address:updatedUser.address,
+          Phone:updatedUser.mobile,
+          Type:updatedUser.type,
+          ProfilePicUrl:updatedUser.profilePicUrl,
+          loggedIn:true
+        });
         localStorage.setItem('Email', updatedUser.result.email);
         localStorage.setItem('Name', updatedUser.result.name);
         localStorage.setItem('Phone', updatedUser.result.mobile);

@@ -21,7 +21,7 @@ const Feed = ({handlefeeds}) => {
     const handleSubmit = (event) => {
       handlefeeds()
         setSubmitted(true)
-        return fetch('/api/feeds', {
+        return fetch('https://localshopper.azurewebsites.net/api/feeds', {
             method: 'POST',
             body: JSON.stringify(inputs),
             headers: {

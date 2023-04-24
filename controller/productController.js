@@ -6,7 +6,7 @@ const { clearHash } = require('./client')
 // GET Methods
 exports.getProducts = async (req, res) => {
   try {
-      const data = await ProductModal.find();
+      const data = await ProductModal.find().cache();
       res.status(200).json((data));    
     }
     catch (err) {

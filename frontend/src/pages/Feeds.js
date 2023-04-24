@@ -15,7 +15,7 @@ const Feeds = () => {
       setcount(count+1);
     };
     useEffect(()=>{
-        axios.get('/feeds')
+        axios.get('https://localshopper.azurewebsites.net/feeds')
             .then(response => {
                 console.log(response)
                 setData(response.data)

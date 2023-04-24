@@ -4,7 +4,7 @@
     "devStart": "nodemon server.js",
     "build": "npm i",
     "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd frontend && npm install && npm run build",
-    "docker-build-webapp": "npm start"
+    "docker-build-webapp": "concurrently \"npm run docker-build-client\" \"npm start\""
   },
   "name": "backend",
   "version": "1.0.0",
