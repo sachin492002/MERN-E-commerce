@@ -14,14 +14,14 @@ exports.getBlockedUsers = (req, res, next) => {
   })
 };
 
-exports.getUsers = (req, res, next) => {
-  UserModal.find()
-    .then((data) => {
-      res.status(200).json(data);
-    })
-    .catch((err) => {
+exports.getUsers = async (req, res, next) => {
+  try {
+    const data = await UserModal.find()
+          res.status(200).json(data);
+  }
+    catch(err) {
       res.status(404).json({ message: err });
-    });
+    }
 };
 
 exports.getUserById = (req, res, next) => {
