@@ -31,8 +31,6 @@ mongoose.connect("mongodb+srv://sachinm20:cp300464@cluster0.nkes8uj.mongodb.net/
   useUnifiedTopology: true,
 });
 
-//cloud mongodb
-// mongoose.connect('mongodb+srv://himanshuhk:uV9qtrWrNYdcu0wW@shopdb.vcwnuof.mongodb.net/shopdb?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connection.on("connected", () => {
   console.log("Connected to database mongodb database");
 });
@@ -42,13 +40,9 @@ const accessLogStream = fs.createWriteStream(
   { flags: "a" }
 );
 
-// Add Morgan logs
 app.use(morgan("combined", { stream: accessLogStream }));
 
-//adding multer middleware
-// Set up Multer middleware
 
-// Serve uploaded files
 app.use("/images", (req, res, next) => {
   console.log(req.path);
 
