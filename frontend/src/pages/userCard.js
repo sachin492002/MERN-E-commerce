@@ -3,7 +3,7 @@ import './Card.css'
 export default function UserCard(props) {
 
   function block(item){
-    return fetch('/api/blocked', {
+    return fetch('https://localshopper.azurewebsites.net/api/blocked', {
         method: 'POST',
         body: JSON.stringify(props.item),
         headers: {

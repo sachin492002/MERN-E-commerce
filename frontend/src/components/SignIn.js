@@ -66,7 +66,7 @@ export default function SignIn({handleDataUser}) {
     console.log(username);
     console.log(password);
 
-    fetch("/api/user", {
+    fetch("https://localshopper.azurewebsites.net/api/user", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

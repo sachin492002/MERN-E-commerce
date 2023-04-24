@@ -20,7 +20,7 @@ const CartTotals = () => {
       // console.log();
       
       const setOrder = () => { 
-        return fetch('/api/orders', {
+        return fetch('https://localshopper.azurewebsites.net/api/orders', {
           method: 'POST',
           body: JSON.stringify(inputs),
           headers: {

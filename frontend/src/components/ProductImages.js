@@ -6,7 +6,7 @@ const ProductImages = ({ image}) => {
   console.log(image);
   return (
       <Wrapper>
-          <img src={(image !=null && image[0]==='u')? 'http://localhost:3001/'+image:image} alt='main' className='main' />
+          <img src={(image !=null && image[0]==='u')? 'https://localshopper.azurewebsites.net/'+image:image} alt='main' className='main' />
       </Wrapper>
   );
 };

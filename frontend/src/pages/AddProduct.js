@@ -31,7 +31,7 @@ const AddProduct = () => {
     for (const key in inputs) {
       formData.append(key.toString(), inputs[key]);
     }
-    fetch("/api/product", {
+    fetch("https://localshopper.azurewebsites.net/api/product", {
       method: "POST",
       body: formData,
     })

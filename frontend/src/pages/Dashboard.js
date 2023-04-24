@@ -18,14 +18,14 @@ export default function Dashboard() {
     if (localStorage.getItem('Type') === 'Seller') {
       axios
         .get(
-          `/api/orders/sell/${localStorage.getItem('Email')}`
+          `https://localshopper.azurewebsites.net/api/orders/sell/${localStorage.getItem('Email')}`
         )
         .then((response) => {
           setData(response.data);
         });
       axios
         .get(
-          `/api/products/seller/${localStorage.getItem(
+          `https://localshopper.azurewebsites.net/api/products/seller/${localStorage.getItem(
             'Email'
           )}`
         )
@@ -40,7 +40,7 @@ export default function Dashboard() {
   function handleDelete(id) {
     setProd(prod.filter((prod) => prod._id !== id));
     console.log(prod);
-    fetch('/api/products/seller/delete', {
+    fetch('https://localshopper.azurewebsites.net/api/products/seller/delete', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export default function Dashboard() {
   useEffect(() => {
     if (localStorage.getItem('Type') === 'Buyer') {
       axios
-        .get(`/api/orders/${localStorage.getItem('Email')}`)
+        .get(`https://localshopper.azurewebsites.net/api/orders/${localStorage.getItem('Email')}`)
         .then((response) => {
           console.log(response.data);
           setData(response.data);
@@ -70,7 +70,7 @@ export default function Dashboard() {
     });
     setData(updatedData);
     axios
-      .put(`/api/orders/${oid}/items/${pid}/status/`, {
+      .put(`https://localshopper.azurewebsites.net/api/orders/${oid}/items/${pid}/status/`, {
         status: newStatus,
       })
       .then((response) => {

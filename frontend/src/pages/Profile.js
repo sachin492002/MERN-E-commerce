@@ -13,7 +13,7 @@ export default function Dashboard() {
   const [data,setData]=useState([]);
   
   useEffect(()=>{
-    axios.get('/api/orders')
+    axios.get('https://localshopper.azurewebsites.net/api/orders')
         .then(response => {
             console.log(response)
             setData(response.data)
