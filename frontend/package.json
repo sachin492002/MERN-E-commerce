@@ -2,7 +2,7 @@
   "name": "store",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://react-backend-k01p.onrender.com/",
+
   "dependencies": {
     "@auth0/auth0-react": "^1.2.0",
     "@emotion/react": "^11.10.5",
@@ -41,6 +41,7 @@
     "netlify": "netlify dev",
     "dev": "netlify dev"
   },
+  "proxy": "https://shopperapi.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",
