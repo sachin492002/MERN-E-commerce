@@ -12,14 +12,11 @@ exports.getBlockedUsers = (req, res, next) => {
     else
     return res.status(200).json({ message: "Logged in", user: user })
   })
-
-  // console.log(user)
 };
 
 exports.getUsers = (req, res, next) => {
-  UserModal.find({blocked:false})
+  UserModal.find()
     .then((data) => {
-      // console.log(data)
       res.status(200).json(data);
     })
     .catch((err) => {

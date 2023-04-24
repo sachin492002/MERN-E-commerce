@@ -29,7 +29,7 @@
   "devDependencies": {
     "nodemon": "^2.0.21"
   },
-  "proxy": "http://localhost:80",
+
   "keywords": [],
   "author": "",
   "license": "ISC",
