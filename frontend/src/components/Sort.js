@@ -7,21 +7,22 @@ const Sort = () => {
   const { filtered_products: products, grid_view, setGridView, setListView, sort, updateSort } = useFilterContext();
 
   return (
-    <Wrapper>
-      <div className='btn-container'>
+    // <Wrapper>
+      <div className='flex w-full inline-flex inset-0 justify-between items-stretch'>
+      <div className='flex flex-col md:flex-row justify-center items-center'>
+          <div className='inline-flex '>
         <button type='button' className={`${grid_view ? 'active' : null}`} onClick={setGridView}>
-          <BsFillGridFill className='clr'/>
+          <BsFillGridFill className='mr-2 text-[var(--clr-primary-5)] text-lg'/>
         </button>
 
         <button type='button' className={`${!grid_view ? 'active' : null}`} onClick={setListView}>
-          <BsList className='clr'/>
+          <BsList className='mr-2 text-[var(--clr-primary-5)] text-lg'/>
         </button>
-
+          </div>
+          <p className='md:ml-20 md:mt-4'>{products.length} products found</p>
       </div>
-      <p>{products.length} products found</p>
-      <hr />
 
-      
+      <div className='absolute right-0'>
       <form>
         <label htmlFor='sort'>sort by</label>
         <select name='sort' id='sort' className='sort-input' value={sort} onChange={updateSort}>
@@ -31,8 +32,9 @@ const Sort = () => {
           <option value='name-z'>name (z-a)</option>
         </select>
       </form>
-      
-    </Wrapper>
+      </div>
+      </div>
+    // </Wrapper>
   );
 };
 

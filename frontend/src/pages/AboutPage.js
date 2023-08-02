@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import {PageHero} from '../components'
-import aboutImg from '../assets/hero-bcg.jpeg'
 import vinay from '../assets/vinay.jpeg'
 import talwar from '../assets/talwar.jpeg'
 import varun from '../assets/varun.jpeg'
@@ -41,25 +40,15 @@ const team = [
 ]
 const AboutPage = () => {
   return <main>
-    
-    <PageHero title="About" />
-    {/* <Wrapper className="page section section-center">
-      <img src={aboutImg} alt="nice desk" />
-      <article>
-        <div className="title">
-          <h2>our story</h2>
-          <div className="underline"></div>
-        </div>
-        <p>Thank you very much. They are to follow the pleasures, the flight of some lives! For the pain is not to be taken from the just, it is great to follow the resilience of the life of a great free life, ours indeed, so that, from a to! If there is any consequence for refusing to do so, it is a free choice to blame. The least of those present was softened.The story of Shopper started back in 2021 in Himanshu kataria's Room.  The marketplace grew rapidly, and in 2022, Shopper capitalization grew to $1 trillion making the company the second most profitable after Apple.
 
-Today, Shopper is considered to be the world’s largest online retailer with more than 300 million monthly active users, and more than 2 million sellers. In 2019, Shopper's annual net revenue reached $280 billion.</p> </article>
-    </Wrapper> */}
+    <PageHero title="About" />
+
   <Wrapper>
-      <div className="responsive-container-block inner-container">
+      <div className="about-page">
         <p className="text-blk section-head-text">Meet Our Team
         </p>
 
-        <div className="responsive-container-block">
+        <div className="about-page-map">
           {(
 
               team.map((mem) => (
@@ -73,18 +62,8 @@ Today, Shopper is considered to be the world’s largest online retailer with mo
                       </div>
                       <p className="text-blk name">{mem.name}
                       </p>
-                      <p className="text-blk position">{mem.position}
-                      </p>
-                      {/* <div className="social-media-links">
-                        <a href="http://www.twitter.com/" target="_blank"><img
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-twitter.svg"/></a>
-                        <a href="http://www.facebook.com/" target="_blank"><img
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-fb.svg"/></a>
-                        <a href="http://www.instagram.com/" target="_blank"><img
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-insta.svg"/></a>
-                        <a href="http://www.gmail.com/" target="_blank"><img
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/gray-mail.svg"/></a>
-                      </div> */}
+
+
                     </div>
                   </div>
               )))}

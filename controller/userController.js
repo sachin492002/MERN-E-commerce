@@ -6,7 +6,7 @@ const client = require("./client.js");
 // GET Methods
 exports.getBlockedUsers = (req, res, next) => {
   return UserModal.find({ blocked: true }).then((user)=>{
-    console.log(user);
+
     if(user.length===0)
     return res.status(401).json({ message: "No user exist"});
     else
@@ -26,8 +26,8 @@ exports.getUsers = async (req, res, next) => {
 
 exports.getUserById = (req, res, next) => {
   const id = req.params.id;
-  // console.log(id, "hi");
-  UserModel.findById(id)
+
+  UserModal.findById(id)
     .then((data) => {
       res.status(200).json(data);
     })
@@ -37,15 +37,14 @@ exports.getUserById = (req, res, next) => {
 };
 // POST Methods
 exports.postUser = (req, res, next) => {
-  
-  console.log(req.body);
+
   UserModal.findOne({ email: req.body.username }).then((user) => {
     if (!user) {
       return res.status(401).json({ message: "User does not exist" });
     }
 
     // return bcrypt.compare(password, req.body.password);
-    console.log(user);
+
     bcrypt.compare(req.body.password, user.password).then((doMatch) => {
       if (doMatch) {
         return res.status(200).json({ message: "Logged in", user: user });
@@ -90,7 +89,7 @@ exports.postUser = (req, res, next) => {
 // };
 
 exports.postRegister = (req, res, next) => {
-  console.log(req.body);
+
   const user = new UserModal({
     name: req.body.name,
     password: req.body.password,
@@ -109,7 +108,6 @@ exports.postRegister = (req, res, next) => {
   user
     .save()
     .then((data) => {
-      console.log(data);
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -121,10 +119,10 @@ exports.postRegister = (req, res, next) => {
 exports.postUpdateUser = (req, res, next) => {
   const { password, email, field, newvalue } = req.body;
 //  console.log(user)
-  UserModal.findOne({email: email}).then((user) => { 
+  UserModal.findOne({email: email}).then((user) => {
     if (!user) {
         return res.status(403).json({message: "User does not exists"})
-    }   
+    }
     // console.log(user);
     bcrypt.compare(password, user.password).then((doMatch) => {
       if (doMatch) {
@@ -138,12 +136,12 @@ exports.postUpdateUser = (req, res, next) => {
       else{
         return res.status(401).json({message: "Invalid Password"})
       }
-      
+
     }).catch((err) => {
       console.log(err);
       return res.json({ message: err });
     });
-    
+
 })
 
 };

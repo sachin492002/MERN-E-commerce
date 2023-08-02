@@ -34,9 +34,9 @@ const Wrapper = styled.section`
     
   }
 
-  color: var(--clr-primary-1);
+  color: var(--clr-grey-1);
   a {
-    color: var(--clr-primary-3);
+    color: var(--clr-grey-3);
     padding: 0.5rem;
     transition: var(--transition);
   }

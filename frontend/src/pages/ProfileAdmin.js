@@ -5,13 +5,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiOutlineFacebook, AiOutlineTwitter } from 'react-icons/ai';
+import {useSelector} from "react-redux";
 
 export default function ProfileAdmin() {
   const [data, setData] = useState([]);
-
+  const {user,loggedin} = useSelector(state=>state.user);
   useEffect(() => {
     axios.get('/api/orders').then((response) => {
-      console.log(response);
+
       setData(response.data);
     });
   }, []);
@@ -23,9 +24,9 @@ export default function ProfileAdmin() {
             <AccountCircleIcon style={{ width: '40px', height: '40px' }} />
           </div>
           <div className="top-heading">
-            {localStorage.getItem('loggedIn') === null
+            {!loggedin
               ? 'new user'
-              : localStorage.getItem('Name')}
+              : user.name}
           </div>
         </div>
         <hr className="hr" />
@@ -33,7 +34,7 @@ export default function ProfileAdmin() {
           {SideDataAdmin.map((val, key) => {
             return (
               <li
-                id={window.location.pathname == val.link ? 'active' : ''}
+                id={window.location.pathname === val.link ? 'active' : ''}
                 className="row"
                 key={key}
                 onClick={() => {
@@ -53,14 +54,14 @@ export default function ProfileAdmin() {
 
       <div className="orders">
         <div>
-          <h1 className="upperhk">{localStorage.getItem('Name')}</h1>
-          <h4>({localStorage.getItem('Type')})</h4>
+          <h1 className="upperhk">{user.name}</h1>
+          <h4>({user.type})</h4>
         </div>
 
         <div className="hk">
           <div>
             <img
-              src={localStorage.getItem('ProfilePicUrl')}
+              src={user.profilePicUrl}
               alt="profile-Pic-Admin"
               className="imagehk"
             />
@@ -69,12 +70,12 @@ export default function ProfileAdmin() {
           <div className="divhk">
             <h3 className="nhk">Details:</h3>
             <h5 className="uphk">Email :</h5>
-            <h5 className="downhk">{localStorage.getItem('Email')}</h5>
+            <h5 className="downhk">{user.email}</h5>
             <h5 className="uphk">Contact :</h5>
-            <h5 className="downhk">{localStorage.getItem('Phone')}</h5>
+            <h5 className="downhk">{user.mobile}</h5>
 
             <h5 className="uphk">Address :</h5>
-            <h5 className="downhk">{localStorage.getItem('Address')}</h5>
+            <h5 className="downhk">{user.address}</h5>
 
             <div className="iconhk">
               <AiOutlineInstagram size="2.5rem" />

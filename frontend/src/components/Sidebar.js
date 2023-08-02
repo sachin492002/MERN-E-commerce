@@ -2,45 +2,60 @@ import React from 'react';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { useProductsContext } from '../context/products_context';
-import { FaTimes } from 'react-icons/fa';
 import { links } from '../utils/constants';
 import styled from 'styled-components';
 import CartButtons from './CartButtons';
-import { useUserContext } from '../context/user_context';
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext();
-  const { myUser } = useUserContext();
+  const NavLinks = () => (
+      <div className="  mt-10">
+        {links.map(({ id, text, url }) => (
+            <Link
+                key={id}
+                to={url}
+                className="capitalize flex flex-row justify-start items-center my-8 text-sm font-medium text-[color:var(--clr-grey-1)] hover:text-dark-2"
+            >
+              {text}
+            </Link>
+        ))}
+      </div>
+  );
 
   return (
     <SidebarContainer>
-      <aside className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
-        <div className='sidebar-header'>
-          <img src={logo} className='logo' alt='shopper' />
-          <button className='close-btn' type='button' onClick={closeSidebar}>
-            <FaTimes />
-          </button>
+      {/*<div className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>*/}
+
+        <div className={`absolute top-0 h-screen w-2/3 bg-gradient-to-tl from-white/10 to-[primary-1] backdrop-blur-lg z-10 p-6 md:hidden smooth-transition transition-[var(--transition)] ${isSidebarOpen ? 'left-0' : '-left-full'}`}>
+          <div className="flex justify-center items-center">
+            <div className='sidebar-header'>
+              <img src={logo} className='logo' alt='shopper' />
+
+            </div>
+          </div>
+          <NavLinks/>
+          <CartButtons />
         </div>
-        <ul className='links'>
-          {links.map(({ id, text, url }) => {
-            return (
-              <li key={id}>
-                <Link to={url} onClick={closeSidebar}>
-                  {text}
-                </Link>
-              </li>
-            );
-          })}
-          {myUser && (
-            <li>
-              <Link to='/checkout' onClick={closeSidebar}>
-                checkout
-              </Link>
-            </li>
-          )}
-        </ul>
-        <CartButtons />
-      </aside>
+        {/*<ul className='links'>*/}
+        {/*  {links.map(({ id, text, url }) => {*/}
+        {/*    return (*/}
+        {/*      <li key={id}>*/}
+        {/*        <Link to={url} onClick={closeSidebar}>*/}
+        {/*          {text}*/}
+        {/*        </Link>*/}
+        {/*      </li>*/}
+        {/*    );*/}
+        {/*  })}*/}
+        {/*  {(*/}
+        {/*    <li>*/}
+        {/*      <Link to='/checkout' onClick={closeSidebar}>*/}
+        {/*        checkout*/}
+        {/*      </Link>*/}
+        {/*    </li>*/}
+        {/*  )}*/}
+        {/*</ul>*/}
+
+      {/*</div>*/}
     </SidebarContainer>
   );
 };
@@ -60,7 +75,6 @@ const SidebarContainer = styled.div`
     color: var(--clr-primary-5);
     transition: var(--transition);
     cursor: pointer;
-    color: var(--clr-red-dark);
     margin-top: 0.2rem;
   }
   .close-btn:hover {
@@ -91,21 +105,21 @@ const SidebarContainer = styled.div`
     color: var(--clr-grey-2);
   }
 
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--clr-white);
-    transition: var(--transition);
-    transform: translate(-100%);
-    z-index: -1;
-  }
-  .show-sidebar {
-    transform: translate(0);
-    z-index: 999;
-  }
+  //.sidebar {
+  //  position: absolute;
+  //  top: 0;
+  //  left: 0;
+  //  width: 50%;
+  //  height: 100%;
+  //  background: var(--clr-white);
+  //  transition: var(--transition);
+  //  transform: translate(-120%);
+  //  //z-index: -1;
+  //}
+  //.show-sidebar {
+  //  transform: translate(0);
+  //  z-index: 999;
+  //}
   .cart-btn-wrapper {
     margin: 2rem auto;
   }

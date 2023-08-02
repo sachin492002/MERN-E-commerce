@@ -1,18 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Filters, ProductList, Sort, PageHero } from '../components';
+import {useFilterContext} from "../context/filter_context";
 
 
 const ProductsPage = () => {
+    const {
+        filters: {
+            text,
+            category,
+            company,
+            color,
+            min_price,
+            price,
+            max_price,
+            shipping,
+        },
+        updateFilters,
+        clearFilters,
+        all_products,
+    } = useFilterContext();
     return (
         <main>
             <PageHero title='products' />
             <Wrapper className='page'>
-                <div className='section-center products'>
-                    <Filters />
-                    <div>
+                <div className='flex flex-col flex-1'>
+                    <div className='flex inline-flex '>
+                    <Filters/>
+                        <div className="flex flex-col">
                         <Sort />
+                    <div className='px-6 h-[100vh] overflow-y-scroll hide-scrollbar flex xl:flex-row'>
                         <ProductList />
+                    </div>
+                    </div>
                     </div>
                 </div>
             </Wrapper>

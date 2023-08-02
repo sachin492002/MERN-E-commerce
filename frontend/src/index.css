@@ -1,23 +1,25 @@
 /*
-=============== 
+===============
 Variables
 ===============
 */
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root {
   /* dark shades of primary color*/
-  --clr-primary-1: hsl(22, 28%, 21%);
-  --clr-primary-2: hsl(22, 28%, 29%);
-  --clr-primary-3: hsl(22, 28%, 37%);
-  --clr-primary-4: hsl(22, 28%, 45%);
+  --clr-primary-1: hsl(201, 77%, 21%);
+  --clr-primary-2: hsl(189, 56%, 25%);
+  --clr-primary-3: hsl(193, 59%, 41%);
+  --clr-primary-4: hsl(203, 28%, 45%);
   /* primary/main color */
-  --clr-primary-5: hsl(22, 31%, 52%);
+  --clr-primary-5: hsl(183, 62%, 43%);
   /* lighter shades of primary color */
-  --clr-primary-6: hsl(22, 31%, 60%);
-  --clr-primary-7: hsl(22, 31%, 67%);
-  --clr-primary-8: hsl(20, 31%, 74%);
-  --clr-primary-9: hsl(22, 31%, 81%);
-  --clr-primary-10: hsl(22, 31%, 88%);
+  --clr-primary-6: hsl(180, 28%, 55%);
+  --clr-primary-7: hsl(160, 42%, 62%);
+  --clr-primary-8: hsl(181, 52%, 68%);
+  --clr-primary-9: hsl(185, 73%, 65%);
+  --clr-primary-10: hsl(0, 0%, 100%);
   /* darkest grey - used for headings */
   --clr-grey-1: hsl(209, 61%, 16%);
   --clr-grey-2: hsl(211, 39%, 23%);
@@ -32,7 +34,7 @@ Variables
   --clr-grey-10: hsl(210, 36%, 96%);
   --clr-white: #fff;
   --clr-red-dark: hsl(360, 67%, 44%);
-  --clr-red-light: hsl(360, 71%, 66%);
+  --clr-red-light: hsl(171, 39%, 52%);
   --clr-green-dark: hsl(125, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #ffffff;
@@ -45,7 +47,7 @@ Variables
   --fixed-width: 620px;
 }
 /*
-=============== 
+===============
 Global Styles
 ===============
 */
@@ -104,6 +106,19 @@ p {
   margin-bottom: 1.25rem;
   color: var(--clr-grey-3);
 }
+
+
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 @media screen and (min-width: 800px) {
   h1 {
     font-size: 3rem;
@@ -137,7 +152,7 @@ p {
   padding: 5rem 0;
 }
 .section-center {
-  width: 90vw;
+  width: 100vw;
   margin: 0 auto;
   max-width: var(--max-width);
 }
@@ -203,4 +218,41 @@ p {
 }
 .page {
   min-height: calc(100vh - (20vh + 10rem));
+}
+
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: hidden;
+  justify-content: center;
+  width: 100vw;
+}
+.about-page-map{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+.link {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--clr-primary-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  transition: var(--transition);
+  opacity: 0;
+  cursor: pointer;
+
+}
+.link svg {
+  font-size: 1.25rem;
+  color: var(--clr-white);
 }

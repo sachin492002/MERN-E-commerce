@@ -1,5 +1,4 @@
-import React,{useEffect,useState} from 'react';
-import axios from 'axios'
+import React from 'react';
 import './Card.css';
 
 export default function Card(){
@@ -20,7 +19,7 @@ return(
       <p>Some text</p>
     </div>
   </div>
-  
+
   <div class="column">
     <div class="card">
       <h3>Card 3</h3>
@@ -28,7 +27,7 @@ return(
       <p>Some text</p>
     </div>
   </div>
-  
+
 </div>
 
 )

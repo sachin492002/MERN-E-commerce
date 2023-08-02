@@ -1,39 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
 import Product from './Product';
 
 const GridView = ({ products }) => {
   return (
-    <Wrapper>
-      <div className='products-container'>
+      <div className="container mx-auto py-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => {
-          return <Product key={product.id} {...product} />;
+          return <Product key={product._id} {...product} />;
         })}
+    </div>
       </div>
-    </Wrapper>
   );
 };
-
-const Wrapper = styled.section`
-  img {
-    height: 175px;
-  }
-
-  .products-container {
-    display: grid;
-    gap: 2rem 1.5rem;
-  }
-
-  @media (min-width: 992px) {
-    .products-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @media (min-width: 1170px) {
-    .products-container {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-`;
 
 export default GridView;

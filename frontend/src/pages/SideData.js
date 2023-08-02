@@ -1,5 +1,4 @@
 import React from 'react'
-import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 
 import RedeemIcon from '@mui/icons-material/Redeem';
@@ -12,7 +11,7 @@ export const SideData = [
         icon:<PersonIcon/>,
         link:"/profile"
     },
-    
+
     {
         title:"Orders",
         icon:<CategoryIcon/>,
@@ -31,7 +30,7 @@ export const sellerSideData = [
         icon:<PersonIcon/>,
         link:"/profile"
     },
-    
+
     {
         title:"Orders",
         icon:<CategoryIcon/>,

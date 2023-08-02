@@ -169,7 +169,7 @@ const useForm = (callback) => {
       formData.append(key.toString(), values[key]);
     }
 
-    fetch("https://localshopper.azurewebsites.net/api/users", {
+    fetch(`${process.env.REACT_APP_API}/api/users`, {
       method: "POST",
       body: formData,
     })

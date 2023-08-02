@@ -1,20 +1,26 @@
-import React,{useContext} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
-import { FaBars, FaDoorOpen } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import {FaBars, FaSearch, FaTimes} from 'react-icons/fa';
+import {Link} from 'react-router-dom';
 
 import CartButtons from './CartButtons';
-import { useProductsContext } from '../context/products_context';
-import { useUserContext } from '../context/user_context';
+import {useProductsContext} from '../context/products_context';
 import Sidebar from './Sidebar';
-import { UserContext } from '../App.js';
+import {useSelector} from "react-redux";
+import Search from "./Search";
+import {useFilterContext} from "../context/filter_context";
+
 
 const Nav = () => {
-    const { openSidebar } = useProductsContext();
-    const { myUser } = useUserContext();
-
-    const user =  useContext(UserContext);
+    const {
+        filters: {
+            text,
+        },
+        updateFilters,
+    } = useFilterContext();
+    const { isSidebarOpen,openSidebar ,closeSidebar} = useProductsContext();
+    const {user,loggedin} = useSelector(state => state.user)
     const links_hk = [
         {
             id: 1,
@@ -39,22 +45,24 @@ const Nav = () => {
             url:'/addproduct',
         }
     ]
+    const [isSearchVisible, setIsSearchVisible] = useState(false);
+
+    const toggleSearchBar = () => {
+        setIsSearchVisible(!isSearchVisible);
+    };
 
     return (
-        <NavContainer>
+         <NavContainer>
             <Sidebar/>
-            <div className='nav-center'>
-                <div className='nav-header'>
+            <div className='flex justify-between items-center mx-auto max-w-screen-xl p-4'>
+                <div className='flex items-center'>
                     <Link to='/'>
-                        <img src={logo} alt='shopper' />
+                        <img src={logo} alt='shopper' className={!isSearchVisible ? 'w-28':'hidden'}/>
                     </Link>
-                    <button type='button' className='nav-toggle' onClick={openSidebar}>
-                        <FaBars />
-                    </button>
-
+                    {isSearchVisible && <div className='w-full block'><Search updateFilters={updateFilters} text={text}/></div>}
                 </div>
-
-                <ul className='nav-links'>
+                <div className='flex items-center'>
+                <ul className={!isSearchVisible ? 'nav-links':'hidden'}>
                     <li>
                         <Link to='/'>home</Link>
                     </li>
@@ -66,7 +74,7 @@ const Nav = () => {
                         <Link to='/about'>about</Link>
                     </li>
 
-                    {user.loggedIn === "true" && user.Type==="Seller" ?
+                    {loggedin && user.type==="Seller" ?
                         (
                             <li>
                                 <Link to='/addproduct'>add product</Link>
@@ -74,8 +82,20 @@ const Nav = () => {
                         ):(null)}
 
                 </ul>
+                </div>
+                <div className='flex items-center'>
+                    <button type='button' className='search-icon' onClick={toggleSearchBar}>
+                        <FaSearch className='text-2xl'/>
+                    </button>
+                    { !isSidebarOpen ?
+                        <button type='button' className='nav-toggle' onClick={openSidebar}>
+                            <FaBars />
+                        </button>:<button className='nav-toggle' type='button' onClick={closeSidebar}>
+                            <FaTimes />
+                        </button>
+                    }
                 <CartButtons />
-
+                </div>
             </div>
         </NavContainer>
     );
@@ -86,12 +106,12 @@ const Nav = () => {
 
 const NavContainer = styled.nav`
   height: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  //display: flex;
+  //align-items: center;
+  //justify-content: center;
   .nav-center {
-    width: 90vw;
+    //width: 90vw;
+    display: flex;
     margin: 0 auto;
     max-width: var(--max-width);
   }

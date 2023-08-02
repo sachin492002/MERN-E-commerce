@@ -9,27 +9,29 @@
   /* background-color: rgb(6, 20, 20); */
   /* background-image: linear-gradient(rgb(48, 40, 40),rgb(246, 246, 247)); */
   /* background: linear-gradient(195deg, rgb(247, 247, 247),rgb(243, 241, 240)); */
-  background: hsl(20, 31%, 95%) ;
+  background: var(--clr-primary-5) ;
   border-radius: 20px;
   margin-bottom: 100px;
   /* border-color: black; */
-  border:2.5px solid hsl(19, 15%, 66%);
-
-  /* position:fixed; */
-  /* margin-top:20px; */
+  border:2.5px solid var(--clr-grey-1);
 }
-/* .sidebar{
-  font-weight: 600;
-  position: fixed;
-  left: 0;
-  top: 0;
-  margin: 10px;
-  height: 600px;
-  width: 280px;
-  background: hsl(20, 31%, 95%);
-  border-radius: 20px;
-  border: 2.5px solid hsl(19, 15%, 66%);
-} */
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+.z-trans{
+  transform: translateZ(0px);
+}
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: var(--clr-grey-1);
+}
+
+.svg-icon circle {
+  stroke: var(--clr-grey-1);
+  stroke-width: 5;
+}
 
 .support{
   margin: 151px;
@@ -55,27 +57,28 @@
   /* border: 15px solid skyblue; */
 }
 
-.typehk{
-  font:bold;
-}
+
 
 .divhk{
-  padding-top:100px;
-  padding-left:100px;
-  justify-content:first baseline;
-  text-align: left;
-  float:left;
-  margin-left:100px;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 7rem 0 10rem 0;
+  text-align: center;
+  padding: 3rem;
+  gap:1rem;
 }
 
-.iconhk{
-  margin-right:40px;
+.flex-row{
+  display: flex;
+  flex-direction: row;
 }
 
+
+.downhk{
+  font-weight: lighter;
+}
 .uphk{
-  margin-top:10px;
-  margin-bottom:0;
-  font-size:140%;
+   font-weight: bold;
 }
 
 
@@ -148,7 +151,7 @@
 }
 .sidebar-list .row:hover{
   /* background-color: rgb(210, 204, 204); */
-  background-color: hsl(20, 31%, 84%);
+  background-color: var(--clr-grey-3);
   cursor: pointer;
   font-size: 20px;
   border-radius: 15px;
@@ -159,7 +162,7 @@
   border-radius: 15px;
   /* background-color: rgb(24, 37, 214); */
   /* background: #bfbcbc; */
-  background:  hsl(20, 31%, 74%);
+  background:  var(--clr-grey-3);
 }
 .row{
   color: white;;
@@ -192,12 +195,12 @@
   display: none;
 }
 .btn{
-  background: #e7e0df;
+  background: var(--clr-primary-5);
   height: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
   /* margin-left: 3px; */
-  color: black;
+  color: var(--clr-primary-10)
 
 }
 .user-list-container {

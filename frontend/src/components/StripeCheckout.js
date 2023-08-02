@@ -4,7 +4,6 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, useStripe, Elements, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useCartContext } from '../context/cart_context';
-import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
 import { useHistory } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
-  const { myUser } = useUserContext();
+
   const history = useHistory();
 
   // Stripe Stuff
@@ -24,7 +23,6 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState('');
   const stripe = useStripe();
   const elements = useElements();
-
   const cardStyle = {
     style: {
       base: {
@@ -44,6 +42,7 @@ const CheckoutForm = () => {
   };
 
   const createPaymentIntent = async () => {
+
     try {
       const { data } = await axios.post('/.netlify/functions/create-payment-intent', JSON.stringify({ cart, shipping_fee, total_amount }));
       setClientSecret(data.clientSecret);
@@ -65,6 +64,7 @@ const CheckoutForm = () => {
   const handleSubmit = async (ev) => {
     ev.preventDefault();
     setProcessing(true);
+    clearCart()
     const payload = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
@@ -95,7 +95,7 @@ const CheckoutForm = () => {
         </article>
       ) : (
         <article>
-          <h4>Hello, {myUser && myUser.name}</h4>
+
           <p>Your total is {formatPrice(shipping_fee + total_amount)}</p>
           <p>Test Card Number : 4242 4242 4242 4242</p>
         </article>

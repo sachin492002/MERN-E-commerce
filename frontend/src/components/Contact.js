@@ -3,17 +3,17 @@ import styled from 'styled-components'
 
 const Contact = () => {
   return <Wrapper>
-    <div className="section-center">
+    <div className="section-center justify-center items-center pl-2 md:pl-0">
       <h3>Join our newsletter and get 20% off</h3>
       <div className="content">
         <p>E-commerce trends for 2021 showed new shopping habits, a rise in marketplaces, a growing delivery market, and marketing automation, among other opportunities.</p>
-        
+
         <form className="contact-form"
           action="https://formspree.io/f/xrgrrbnk"
           method="POST"
           >
           <input type="email" className="form-input" placeholder="enter email" name="email" />
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="submit-btn mr-2">
             subscribe
           </button>
         </form>

@@ -5,11 +5,10 @@ import App from './App';
 import { ProductsProvider } from './context/products_context';
 import { FilterProvider } from './context/filter_context';
 import { CartProvider } from './context/cart_context';
-import { UserProvider } from './context/user_context';
 import { Auth0Provider } from '@auth0/auth0-react';
+import {Provider} from "react-redux";
+import {store} from "./utils/store";
 
-// dev-vbobagow.us.auth0.com
-// ahj5ZGOqYJOza2JQRSUS3wFOx0CKIFMG
 
 ReactDOM.render(
   <Auth0Provider
@@ -18,7 +17,7 @@ ReactDOM.render(
     redirectUri={window.location.origin}
     cacheLocation='localstorage'
   >
-    <UserProvider>
+   <Provider store={store}>
       <ProductsProvider>
         <FilterProvider>
           <CartProvider>
@@ -26,7 +25,8 @@ ReactDOM.render(
           </CartProvider>
         </FilterProvider>
       </ProductsProvider>
-    </UserProvider>
+    {/*</UserProvider>*/}
+   </Provider>
   </Auth0Provider>,
   document.getElementById('root')
 );

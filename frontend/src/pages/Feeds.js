@@ -15,13 +15,12 @@ const Feeds = () => {
       setcount(count+1);
     };
     useEffect(()=>{
-        axios.get('https://localshopper.azurewebsites.net/api/feeds')
+        axios.get(`${process.env.REACT_APP_API}/api/feeds`)
             .then(response => {
-                console.log(response)
                 setData(response.data)
             })
     },[count])
-    
+
     return(
         <Wrapper>
             <div className='test1'><h1>What our User Says
@@ -43,11 +42,11 @@ const Feeds = () => {
                             </div>
                             <div className="client-comment">
                                 <p>{msg.msg}</p>
-                            </div>           
+                            </div>
                         </div>
                 ))
             )}
-            
+
         </div>
         <Feed handlefeeds={handlefeeds}/>
         </Wrapper>

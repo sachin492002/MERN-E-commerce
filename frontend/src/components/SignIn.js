@@ -1,27 +1,13 @@
 import * as React from "react";
-import { useState ,useContext} from "react";
-import useForm from "./useForm";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import {useState} from "react";
 import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useFormik, Formik } from "formik";
+import {createTheme} from "@mui/material/styles";
 import "./Signup.css";
-import axios from "axios";
-import { useEffect } from "react";
-import Redux from "react-redux";
-import { useHistory } from "react-router-dom";
-import { truncate } from "lodash";
-import { UserContext } from '../App.js';
+import {useHistory} from "react-router-dom";
+import Cookies from 'js-cookie'
+import {useDispatch} from 'react-redux';
+import {setLoggedIn, setUser} from "../context/userSlice";
 function Copyright(props) {
   return (
     <Typography
@@ -42,11 +28,13 @@ function Copyright(props) {
 
 const theme = createTheme();
 let userState = {};
-//const {userState,changeUserstate}=useState({})
 
-export default function SignIn({handleDataUser}) {
+
+export default function SignIn() {
   const [inputs, setInputs] = useState({});
-  const user = useContext(UserContext);
+  const setCookie = (name, value, daysToExpire) => {
+    Cookies.set(name, value, { expires: daysToExpire });
+  };
   const handleChange = (event) => {
     const name = event.target.name;
     const value =
@@ -55,18 +43,17 @@ export default function SignIn({handleDataUser}) {
         : event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-  
 
 
+  const dispatch = useDispatch();
   const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     const username = inputs.email;
     const password = inputs.password;
-    console.log(username);
-    console.log(password);
 
-    fetch("https://localshopper.azurewebsites.net/api/user", {
+
+    fetch(`${process.env.REACT_APP_API}/api/user`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -86,30 +73,15 @@ export default function SignIn({handleDataUser}) {
           history.push("/login");
           return;
         }
-        console.log(resData);
-          let newuser={
-            Name:resData.user.name,
-            Email:resData.user.email,
-            Address:resData.user.address,
-            Phone:resData.user.phone,
-            Type:resData.user.type,
-            ProfilePicUrl:resData.user.profilePicUrl,
-            loggedIn:true
-          }
-          handleDataUser(newuser);
-          localStorage.setItem("Name", resData.user.name);
-          localStorage.setItem("Email", resData.user.email);
-          localStorage.setItem("Address", resData.user.address);
-          localStorage.setItem("Phone", resData.user.mobile);
-          localStorage.setItem("Type", resData.user.type);
-          localStorage.setItem("ProfilePicUrl",resData.user.profilePicUrl);
-          localStorage.setItem("loggedIn", "true");
-          alert("Logged In Successfully");
+
+        dispatch(setUser(resData?.user));
+        dispatch(setLoggedIn(true));
+
+          setCookie('userid',resData.user._id,7);
           history.push("/dashboard");
           return;
       })
       .catch((error) => {
-        // Handle authentication error
         console.log(error.message);
         alert("Error in Authentication");
       });
@@ -203,5 +175,3 @@ export default function SignIn({handleDataUser}) {
   );
 }
 
-export { userState };
-// export {changeUserstate};

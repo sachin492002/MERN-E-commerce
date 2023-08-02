@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 import { SideData } from "./SideData";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import {useSelector} from "react-redux";
 
 
 
 export default function SellerItems() {
- 
-  const [value, changeValue] = useState({company:localStorage.getItem("Name")});
+  const {user,loggedin} = useSelector(state=>state.user);
+  const [value, changeValue] = useState({company:user.name});
   const [items, changeItems] = useState([]);
 
   function loadData(event) {
@@ -26,7 +26,7 @@ export default function SellerItems() {
         changeItems(resData.data)
       })
       .catch((err) => console.log(err));
-    
+
   }
 
 
@@ -36,15 +36,15 @@ export default function SellerItems() {
         <div className="image">
         <div className="imghk">
             <img
-              src={localStorage.getItem("ProfilePicUrl")}
-              alt="Profile Pic"  
+              src={user.profilePicUrl}
+              alt="Profile Pic"
               className="imghk"
             />
           </div>
           <div className="top-heading">
-            {localStorage.getItem("loggedIn") === null
+            {!loggedin
               ? "new user"
-              : localStorage.getItem("Name")}
+              : user.name}
           </div>
         </div>
         <hr className="hr" />
@@ -52,7 +52,7 @@ export default function SellerItems() {
           {SideData.map((val, key) => {
             return (
               <li
-                id={window.location.pathname == val.link ? "active" : ""}
+                id={window.location.pathname === val.link ? "active" : ""}
                 className="row"
                 key={key}
                 onClick={() => {
@@ -76,7 +76,7 @@ export default function SellerItems() {
         </button>
         <div className="blkdiv">
           {items?.map((item) => {
-            return <h5 className="blkfld">{item.name} Rs.{item.price}</h5>; 
+            return <h5 className="blkfld">{item.name} Rs.{item.price}</h5>;
           })}
         </div>
       </div>

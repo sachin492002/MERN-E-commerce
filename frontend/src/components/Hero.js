@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom'
 // import heroBcg2 from '../assets/hero-bcg-2.jpeg'
 
 const Hero = () => {
-  return <Wrapper className="section-center">
-    <article className="content">
+  return <Wrapper className="section-center pl-2 md:pl-0">
+    <article className="content">F
       <h1>
       Amazing things will happen when you listen to the consumers
       </h1>
       <p>Communication is a two-way street. We spend a lot of time strategizing what we say to our customers, but we need to spend just as much time listening to understand our customers.</p>
       <Link to="/products" className="btn hero-btn">shop now</Link>
     </article>
-    
+
     <article className="img-container">
       <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fGUlMjBzaG9wcGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="nice table" className="main-img" />
       {/* <img src="https://images.unsplash.com/photo-1592503254549-d83d24a4dfab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGUlMjBzaG9wcGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60" alt="person working" className="accent-img" /> */}

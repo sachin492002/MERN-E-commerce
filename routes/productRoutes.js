@@ -5,7 +5,6 @@ const uploads = require("../middlewares/uploads");
 
 // GET Routes
 router.get("/products", productController.getProducts);
-
 router.get("/products/:id", productController.getProduct);
 router.get("/products/seller/:seller", productController.getSellerProducts);
 router.delete("/products/seller/delete", productController.deleteProduct);

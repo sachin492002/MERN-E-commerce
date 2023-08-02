@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React  from 'react'
 import "./Modal.css";
 import logo from './11zon_cropped.png'
 import {useForm} from 'react-hook-form'
@@ -52,7 +52,7 @@ export default function Modal({ setModal2 ,setOpenModal }) {
     <input  type="text" id="username" name="username" placeholder="Enter a username you would like to have" {... register("username" ,{required:"Choosing Username is mandatory"})}/><br/>
     {errors.username && (<small>{errors.username.message}</small>)}
     </p>
-    
+
     <p>
     <input type="email" id="email" name="email" placeholder="Enter your e-mail id to receive daily updates" {... register("email" ,{required:"Please fill this field" ,
        pattern:{value:/^[A-Z0-9+_.-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -65,13 +65,13 @@ export default function Modal({ setModal2 ,setOpenModal }) {
     <input type="password" id="pass" name="pass" placeholder="Choose a strong Password" {... register("password" ,{required:"A valid Password is necessary"})}/><br/>
     {errors.password && (<small>{errors.password.message}</small>)}
     </p>
-    
+
     {/* <label>Please enter E-mail in thre correct format</label> */}
     <p>
       <input type="password" id="conf" name="conf" placeholder="Confirm Password" {... register("pass" ,{required:"Please confirm your Password"})}/><br/>
       {errors.pass && (<small>{errors.pass.message}</small>)}
     </p>
-    
+
     {/* <p className="forgot"></p> */}
     <p>
     <input type="submit" id="login" value="SUBMIT"/>

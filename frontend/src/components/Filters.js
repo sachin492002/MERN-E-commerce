@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { useFilterContext } from '../context/filter_context';
 import { getUniqueValues, formatPrice } from '../utils/helpers';
-import { FaCheck } from 'react-icons/fa';
 
 const Filters = () => {
     const {
@@ -28,22 +27,6 @@ const Filters = () => {
 
     return (
         <Wrapper>
-            <div className="content">
-                <form onSubmit={(e) => e.preventDefault()}>
-
-                    <div className="form-control">
-                        <input
-                            type="text"
-                            name="text"
-                            placeholder="search"
-                            className="search-input"
-                            value={text}
-                            onChange={updateFilters}
-                        />
-                    </div>
-                </form>
-            </div>
-
             <div className="form-control">
                 <h5>category</h5>
                 <div>
@@ -83,25 +66,27 @@ const Filters = () => {
 
 
 
-            <div className="form-control">
+            <div className="form-control slider">
                 <h5>price</h5>
-                <p className="price">{formatPrice(price)}</p>
+                <p className="text-grey-800">{formatPrice(price)}</p>
                 <input
                     type="range"
                     name="price"
                     onChange={updateFilters}
+                    // className='w-full h-1 mb-6 rounded-lg cursor-pointer range-sm'
                     min={min_price}
                     max={max_price}
                     value={price}
                 />
             </div>
 
-            <div className="form-control shipping">
+            <div className="form-control">
                 <label htmlFor="shipping">free shipping</label>
                 <input
                     type="checkbox"
                     name="shipping"
                     id="shipping"
+
                     onChange={updateFilters}
                     checked={shipping}
                 />
@@ -116,18 +101,22 @@ const Filters = () => {
 };
 
 const Wrapper = styled.section`
+  max-width: 30%;
+  padding-left: 2rem;
   .form-control {
     margin-bottom: 1.25rem;
     h5 {
       margin-bottom: 0.5rem;
     }
   }
+  
   .search-input {
     padding: 0.5rem;
     background: var(--clr-grey-10);
     border-radius: var(--radius);
     border-color: transparent;
     letter-spacing: var(--spacing);
+    overflow-clip: 20%;
   }
   .search-input::placeholder {
     text-transform: capitalize;
@@ -168,7 +157,6 @@ const Wrapper = styled.section`
     border: none;
     cursor: pointer;
     opacity: 0.5;
-    display: flex;
     align-items: center;
     justify-content: center;
     svg {

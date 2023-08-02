@@ -3,25 +3,26 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useProductsContext } from '../context/products_context';
 import { single_product_url as url } from '../utils/constants';
 import { formatPrice } from '../utils/helpers';
-import { SignIn, Loading, Error, ProductImages, AddToCart, Stars, PageHero } from '../components';
+import { Loading, Error, ProductImages, AddToCart, Stars, PageHero } from '../components';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import {useSelector} from "react-redux";
 
 const SingleProductPage = () => {
   const { id } = useParams();
   const { single_product_loading: loading, single_product_error: error, single_product: product, fetchSingleProduct } = useProductsContext();
-
-  
+  const history = useHistory();
+const {user,loggedin}=useSelector(state => state.user)
   useEffect(() => {
     fetchSingleProduct(`${url}${id}`);
-    console.log(id);
+
   }, [id]);
 
-  const history = useHistory();
+
   function removeItem(event) {
     event.preventDefault();
     // console.log(sku);
-    fetch("https://localshopper.azurewebsites.net/api/remove-item", {
+    fetch(`${process.env.REACT_APP_API}/api/remove-item`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +39,7 @@ const SingleProductPage = () => {
       .catch((err) => console.log(err));
   }
 
-  if (loading) {
+  if (loading || !product) {
     return <Loading />;
   }
 
@@ -58,9 +59,9 @@ const SingleProductPage = () => {
           <div className='product-center'>
             <ProductImages image={image} />
             <section className='content'>
-              <h2>{name}</h2>
+              <p className='text-2xl md:text-4xl text-[var(--clr-primary-5)]'>{name}</p>
               <Stars stars={(Math.random() * 5)+1} reviews={Math.floor(Math.random()*200)+1} />
-              
+
               <h5 className='price'>{formatPrice(price)}</h5>
               <p className='desc display-linebreak'>{description}</p>
               <p className='info'>
@@ -77,18 +78,18 @@ const SingleProductPage = () => {
                 {company}
               </p>
               <hr />
-              
-              { localStorage.getItem("loggedIn") === "true" && localStorage.getItem("Type")==="Buyer" ?  
+
+              { loggedin && user.type==="Buyer" ?
                 stock > 0 && <AddToCart product={product} />
                 :
                 <button className="submit-btn">
                   <Link to="/login"  className="link-hk"> Login to Buy </Link>
                 </button>
-                 
+
                 }
-                { localStorage.getItem("loggedIn") === "true" && localStorage.getItem("Type")==="Admin"   
+                { loggedin === "true" && user.type === "Admin"
                  && (<button onClick={removeItem} className="submit-btn">
-                  Remove Product 
+                  Remove Product
                 </button>)
                 }
             </section>

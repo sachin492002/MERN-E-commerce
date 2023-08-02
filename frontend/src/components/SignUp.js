@@ -1,12 +1,11 @@
 import * as React from "react";
-import { useState,useEffect,useContext } from "react";
+import { useState } from "react";
 import useForm from "./useForm";
 
 import Link from "@mui/material/Link";
 
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
 import "./Signup.css";
 
@@ -36,12 +35,12 @@ export default function SignUp() {
     console.log("Callback function when form is submitted!");
     console.log("Form Values ", values);
   };
-  
+
   const { handleChange, values, errors, handleSubmit, valuesss } =
     useForm(formLogin);
 
   const [inputs, setInputs] = useState({});
-  
+
   return (
     <div className="login-root">
       <div className="box-root flex-flex flex-direction--column fi">
@@ -101,7 +100,7 @@ export default function SignUp() {
                       id="html"
                       name="type"
                       value="Seller"
-                      
+
                     />
                     <label className ="radioLabel">Seller</label>
                     <br />

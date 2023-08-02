@@ -3,17 +3,18 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 
 import { SideDataAdmin } from './SideData';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios';
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { AiOutlineFacebook, AiOutlineTwitter } from 'react-icons/ai';
 import CallIcon from '@mui/icons-material/Call';
+import {useSelector} from "react-redux";
 export default function Admin() {
   const [data, setData] = useState([]);
+  const {user,loggedin} = useSelector(state => state.user);
   const [blocked, setBlocked] = useState([]);
   const [selectedItem, setSelectedItem] = useState('');
   useEffect(() => {
-    axios.get('https://localshopper.azurewebsites.net/api/usersBlocked').then((response) => {
+    axios.get(`${process.env.REACT_APP_API}/api/usersBlocked`).then((response) => {
       console.log("hi "+response.data.user);
       setBlocked(response.data.user);
     });
@@ -22,7 +23,7 @@ export default function Admin() {
     setSelectedItem(link);
   };
   useEffect(() => {
-    axios.get('https://localshopper.azurewebsites.net/api/usersAll').then((response) => {
+    axios.get(`${process.env.REACT_APP_API}/api/usersAll`).then((response) => {
       console.log(response);
       setData(response.data);
     });
@@ -33,7 +34,7 @@ export default function Admin() {
     setData(data.filter(user => user.email !== email));
     setBlocked([...blocked, data.find(user => user.email === email)]);
 
-    fetch('https://localshopper.azurewebsites.net/api/block-user', {
+    fetch(`${process.env.REACT_APP_API}/api/block-user`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -46,7 +47,7 @@ export default function Admin() {
     setBlocked(blocked.filter(user => user.email !== email));
     setData([...data, blocked.find(user => user.email === email)]);
     console.log('Unblocked');
-    fetch('https://localshopper.azurewebsites.net/api/unblock-user', {
+    fetch(`${process.env.REACT_APP_API}/api/unblock-user`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -57,7 +58,7 @@ export default function Admin() {
   }
   function handleDelete(email) {
     setData(data.filter(user => user.email !== email));
-    fetch('https://localshopper.azurewebsites.net/api/delete-user', {
+    fetch(`${process.env.REACT_APP_API}/api/delete-user`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -72,15 +73,15 @@ export default function Admin() {
         <div className="image">
           <div className="imghk">
             <img
-              src={localStorage.getItem('ProfilePicUrl')}
+              src={user.profilePicUrl}
               alt="Profile Pic"
               className="imghk"
             />
           </div>
           <div className="top-heading">
-            {localStorage.getItem('loggedIn') === null
+            {!loggedin
               ? 'new user'
-              : localStorage.getItem('Name')}
+              : user.name}
           </div>
         </div>
         <hr className="hr" />
@@ -101,36 +102,36 @@ export default function Admin() {
             );
           })}
         </ul>
-    
+
       </div>
-        
+
       <div className="orders">
 
       {selectedItem === '/profileAdmin' && (
         <div>
             <div>
-                <h1 className="upperhk">{localStorage.getItem('Name')}</h1>
-                <h4>({localStorage.getItem('Type')})</h4>
+                <h1 className="upperhk">{user.name}</h1>
+                <h4>({user.type})</h4>
               </div>
             <div className="hk">
               <div>
                 <img
-                  src={localStorage.getItem('ProfilePicUrl')}
+                  src={user.profilePicUrl}
                   alt="profile-Pic-Admin"
                   className="imagehk"
                 />
               </div>
-    
+
               <div className="divhk">
                 <h3 className="nhk">Details:</h3>
                 <h5 className="uphk">Email :</h5>
-                <h5 className="downhk">{localStorage.getItem('Email')}</h5>
+                <h5 className="downhk">{user.email}</h5>
                 <h5 className="uphk">Contact :</h5>
-                <h5 className="downhk">{localStorage.getItem('Phone')}</h5>
-    
+                <h5 className="downhk">{user.mobile}</h5>
+
                 <h5 className="uphk">Address :</h5>
-                <h5 className="downhk">{localStorage.getItem('Address')}</h5>
-    
+                <h5 className="downhk">{user.address}</h5>
+
                 <div className="iconhk">
                   <AiOutlineInstagram size="2.5rem" />
                   <AiOutlineFacebook size="2.5rem" />
@@ -197,11 +198,11 @@ export default function Admin() {
                 <h3>Stay Connected</h3>
                 <h5 >For More information, you can connect our Chief Engineer</h5>
                 <h4 >Mr. Talwar Veera </h4>
-                <h4>  <CallIcon/> 9876543210</h4> 
+                <h4>  <CallIcon/> 9876543210</h4>
               </div>
         </ul>   )}
       </div>
     </div>
-    
+
   );
 }

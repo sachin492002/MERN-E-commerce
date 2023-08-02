@@ -1,7 +1,6 @@
-import React,{useContext} from "react";
+import React from "react";
 import {
   FaShoppingCart,
-  FaUserMinus,
   FaUserPlus,
   FaDoorOpen,
 } from "react-icons/fa";
@@ -9,26 +8,29 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
-import { useUserContext } from "../context/user_context";
+
 import { Button } from "@mui/material";
-import { UserContext } from '../App.js';
+import {useDispatch, useSelector} from "react-redux";
+import {logoutUser} from "../context/userSlice";
+import Cookies from 'js-cookie'
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
   const { total_items, clearCart } = useCartContext();
-  const { loginWithRedirect, myUser, logout } = useUserContext();
-  const user =  useContext(UserContext);
+  const {user,loggedin} = useSelector(state => state?.user)
+  const dispatch = useDispatch();
+  const deleteCookie = (name) => {
+    Cookies.remove(name);
+  };
+
   function logoutHandler() {
-    localStorage.clear();
-    localStorage.setItem("loggedIn", "false");
+    dispatch(logoutUser())
+    deleteCookie('userid');
   }
 
   return (
       <Wrapper className="cart-btn-wrapper">
-
-
-
-        <div className="new-login">
-          {user.loggedIn === "false" ? (
+        <div className="new-login flex-inline justify-center items-center">
+          {loggedin === false ? (
               <Link to="/login" className="cart-btn-name">
                 Login
                 <span className="cart-container">
@@ -36,15 +38,14 @@ const CartButtons = () => {
             </span>
               </Link>
           ) : (
-              <Link to={user.Type==="Admin" ?  "/admin" : "/dashboard"} className="cart-btn-name">
-                {user.Name}
+              <Link to={user?.type==="Admin" ?  "/admin" : "/dashboard"} className="cart-btn-name">
+                {user.name}
                 <span className="cart-container-login">
-              <FaUserPlus />
             </span>
               </Link>
           )}
 
-          {user.loggedIn === "true" && user.Type==="Buyer" ?
+          {loggedin && user.type==="Buyer" ?
               <Link to="/cart" onClick={closeSidebar} className="cart-btn">
           <span className="cart-container">
             <FaShoppingCart />

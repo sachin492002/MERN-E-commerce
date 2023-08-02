@@ -1,26 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useCartContext } from '../context/cart_context';
-import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
-import { Link } from 'react-router-dom';
 import StripeCheckout from 'react-stripe-checkout';
+import {useSelector} from "react-redux";
 
 const CartTotals = () => {
-    const { total_amount, shipping_fee, cart } = useCartContext();
-    const { myUser, loinWithRedirect } = useUserContext();
-
+    const { total_amount, shipping_fee, cart,clearCart } = useCartContext();
+    const {user} = useSelector(state => state.user)
     function onToken(token){
         console.log(token);
     }
 
       // console.log(cart);
-      let userName={buyerEmail:localStorage.getItem("Email")}
+      let userName={buyerEmail:user.email}
       const inputs = [userName,...cart];
       // console.log();
-      
-      const setOrder = () => { 
-        return fetch('https://localshopper.azurewebsites.net/api/orders', {
+
+      const setOrder = () => {
+        return fetch(`${process.env.REACT_APP_API}/api/orders`, {
           method: 'POST',
           body: JSON.stringify(inputs),
           headers: {
@@ -28,9 +26,9 @@ const CartTotals = () => {
           },
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log('f'));
       };
-    
+
     return (
         <Wrapper>
             <div>
@@ -46,7 +44,7 @@ const CartTotals = () => {
                         order total : <span>{formatPrice(total_amount + shipping_fee)}</span>
                     </h4>
                 </article>
-           
+
                     <StripeCheckout
                     name="Shopper Locals Store"
                     amount={(total_amount + shipping_fee)*100}
@@ -59,7 +57,7 @@ const CartTotals = () => {
                     </button>
 
                     </StripeCheckout>
-                
+
             </div>
         </Wrapper>
     );

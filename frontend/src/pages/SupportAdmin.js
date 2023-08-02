@@ -1,28 +1,18 @@
 import React,{useEffect,useState} from 'react';
-import { FaBeer, FaWindows } from 'react-icons/fa';
 import './Dashboard.css';
 import { SideDataAdmin } from './SideData';
-import { Link } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios'
 import CallIcon from '@mui/icons-material/Call';
 
-import Box from '@mui/material/Box';
-import Card from './Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
+import {useSelector} from "react-redux";
 
 
 
 export default function SupportAdmin() {
- 
+
   const [data,setData]=useState([]);
-  
+  const {user,loggedin} = useSelector(state=>state.user);
   useEffect(()=>{
     axios.get('/api/orders')
         .then(response => {
@@ -37,7 +27,7 @@ export default function SupportAdmin() {
         <div className="img">
           <AccountCircleIcon style={{ width: '40px', height: '40px' }} />
         </div>
-        <div className="top-heading">{localStorage.getItem('loggedIn')===null?"new user":localStorage.getItem('Name')}</div>
+        <div className="top-heading">{!loggedin ? "new user":user.name}</div>
       </div>
       <hr className="hr" />
       <ul className="sidebar-list">
@@ -61,19 +51,19 @@ export default function SupportAdmin() {
         <div id="pro">UPGRADE TO PRO</div>
       </div>
     </div>
-    
+
     <div className="orders">
-      {console.log(data)}
+
       <ul>
               <div className='support'>
                 <h3>Stay Connected</h3>
                 <h5 >For More information, you can connect our Chief Engineer</h5>
                 <h4 >Mr. Talwar Veera </h4>
-                <h4>  <CallIcon/> 9876543210</h4> 
+                <h4>  <CallIcon/> 9876543210</h4>
               </div>
         </ul>
     </div>
-                
+
     </div>
   );
 }

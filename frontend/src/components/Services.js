@@ -29,13 +29,13 @@ const Services = () => {
       "Shopper slowly grew in prominence and was receiving 100 orders per day by 2008. In 2010, Shopper acquired the Bangalore-based social book discovery service WeRead from Lulu.com."
      },
   ]
-  
+
   return <Wrapper>
-    <div className="section-center">
-      <article className="header">
+    <div className="section-center flex flex-col justify-center items-center">
+      <article className="header flex flex-col justify-center items-center">
         <h3>Ensuring the best<br/> welfare of the buyers
         </h3>
-        <p>The company itself is a very successful company. Conveniently, those right services are important to but easy indeed further flattery as if!</p></article>
+        <p className='p-3'>The company itself is a very successful company. Conveniently, those right services are important to but easy indeed further flattery as if!</p></article>
       <div className="services-center">
 
         {services.map((service) => {

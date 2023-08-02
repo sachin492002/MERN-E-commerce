@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ProductImages = ({ image}) => {
 
-  console.log(image);
   return (
       <Wrapper>
-          <img src={(image !=null && image[0]==='i')? 'https://localshopper.azurewebsites.net/'+image:image} alt='main' className='main' />
+          <img src={(image !=null && image[0]==='i')? `${process.env.REACT_APP_API}/`+image:image} alt='main' className='main' />
       </Wrapper>
   );
 };

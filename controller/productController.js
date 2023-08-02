@@ -6,8 +6,8 @@ const { clearHash } = require('./client')
 // GET Methods
 exports.getProducts = async (req, res) => {
   try {
-      const data = await ProductModal.find().cache();
-      res.status(200).json((data));    
+      const data = await ProductModal.find();
+      res.status(200).json((data));
     }
     catch (err) {
     console.log(err);
@@ -18,7 +18,6 @@ exports.getProducts = async (req, res) => {
 
 exports.getSellerProducts = (req, res) => {
   const seller = req.params.seller;
-  console.log(seller);
   ProductModal.find({ seller: seller })
     .then((data) => {
       res.status(200).json(data);
@@ -29,7 +28,7 @@ exports.getSellerProducts = (req, res) => {
 };
 
 exports.deleteProduct = (req, res) => {
-  console.log(req.body.id);
+
   clearHash('default')
   ProductModal.deleteOne({ _id: req.body.id })
     .then((product) => {
@@ -46,7 +45,6 @@ exports.deleteProduct = (req, res) => {
 };
 exports.getProduct = (req, res) => {
   const id = req.params.id;
-  // console.log(id, "hi");
   ProductModal.findById(id)
     .then((data) => {
       res.status(200).json(data);
@@ -58,7 +56,7 @@ exports.getProduct = (req, res) => {
 
 // POST Methods
 exports.postProduct = (req, res) => {
-  console.log(req.file);
+
   clearHash('default')
   const product = new ProductModal({
     name: req.body.name,

@@ -1,38 +1,44 @@
-import {React,useContext,createContext,useState,useEffect} from 'react';
+import {React, useEffect} from 'react';
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import { Navbar, Sidebar, Footer } from './components';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SignInAdmin from './components/SignInAdmin';
 
-import { Update,SellerItems,Registered,SupportAdmin,Home, SingleProduct, Cart, Checkout, Error, About, Products, PrivateRoute, AuthWrapper,Dashboard,Profile,Orders,Support ,Admin,ProfileAdmin,Users} from './pages';
+import { Update,SellerItems,Registered,SupportAdmin,Home, SingleProduct, Cart, Error, About, Products, Dashboard,Orders,Admin,ProfileAdmin,Users} from './pages';
 import AddProduct from "./pages/AddProduct";
+import {useDispatch} from "react-redux";
+import axios from "axios";
+import {setLoggedIn, setUser} from "./context/userSlice";
 
-export const UserContext = createContext(null);
+import Cookies from 'js-cookie'
+import Temp from "./pages/Users";
+
 function App() {
-  const [user, setUser] = useState({Type:localStorage.getItem('Type'),
-  Email:localStorage.getItem('Email'),
-  Name:localStorage.getItem('Name'),
-  ProfilePicUrl:localStorage.getItem('ProfilePicUrl'),
-  loggedIn:localStorage.getItem('loggedIn'),
-  Phone:localStorage.getItem('Phone'),
-  Address:localStorage.getItem("Address")
-});
-useEffect(() => {
-}, [user]);
-const handleDataUser = (newuser) => {
-  setUser(newuser);
-};
+  console.log(process.env.REACT_APP_API)
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    axios
+        .get(`${process.env.REACT_APP_API}/api/user/${Cookies.get('userid')}`)
+        .then((response) => {
+
+          dispatch(setUser(response.data));
+          dispatch(setLoggedIn(true));
+        })},[])
 
 
   return (
-    <UserContext.Provider value={user}>
+
     <div>
        <Router>
-        
+
         <Navbar />
           <Sidebar />
         <Switch>
+          <Route exact path='/temp'>
+            <Temp />
+          </Route>
+
           <Route exact path='/'>
             <Home />
           </Route>
@@ -40,7 +46,7 @@ const handleDataUser = (newuser) => {
             <Registered />
           </Route>
           <Route exact path='/update'>
-            <Update handleDataUser={handleDataUser}/>
+            <Update/>
           </Route>
           <Route exact path='/items'>
             <SellerItems />
@@ -58,14 +64,12 @@ const handleDataUser = (newuser) => {
             <AddProduct/>
           </Route>
           <Route exact path='/login'>
-            <SignIn handleDataUser={handleDataUser}/>
+            <SignIn/>
           </Route>
           <Route exact path='/signin'>
             <SignUp  />
           </Route>
-          {/* <Route exact path='/profile'>
-            <Profile/>
-          </Route> */}
+
           <Route exact path='/profileAdmin'>
             <ProfileAdmin/>
           </Route>
@@ -91,11 +95,10 @@ const handleDataUser = (newuser) => {
             <Error />
           </Route>
         </Switch>
-          
+
         <Footer />
       </Router>
     </div>
-    </UserContext.Provider>
   );
 }
 

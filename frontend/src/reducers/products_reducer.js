@@ -23,8 +23,17 @@ const products_reducer = (state, action) => {
   }
 
   if (action.type === GET_PRODUCTS_SUCCESS) {
-    const featured_products = action.payload.filter((product) => product.featured === true)
-    return {...state, products_loading: false, products: action.payload, featured_products}
+    const baseImageUrl = process.env.REACT_APP_API;
+    const updatedPayload = action.payload.map((product) => {
+      if (!product.image.startsWith('https://')) {
+        product.image = baseImageUrl+'/' +product.image;
+      }
+      return product;
+    });
+
+    const featured_products = updatedPayload.filter((product) => product.featured === true);
+
+    return {...state, products_loading: false, products: updatedPayload, featured_products}
   }
 
   if (action.type === GET_PRODUCTS_ERROR) {

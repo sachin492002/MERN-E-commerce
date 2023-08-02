@@ -1,14 +1,18 @@
-import React, { useState,useContext} from 'react';
+import React, { useState} from 'react';
 import './UpdatePage.css';
-import { UserContext } from '../App.js';
+import {useDispatch, useSelector} from "react-redux";
+import {updateUser} from "../context/userSlice";
 
-const UpdatePage = ({handleDataUser}) => {
-  const user =  useContext(UserContext);
+
+const UpdatePage = () => {
+
+  const dispatch = useDispatch();
+  const {user,loggedin} = useSelector(state=>state.user);
   const [formData, setFormData] = useState({
-    email: localStorage.getItem('Email'),
+    email: user.email,
     field: 'name',
   });
-  
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -19,11 +23,12 @@ const UpdatePage = ({handleDataUser}) => {
   };
 
   const handleSubmit = async (event) => {
+
     event.preventDefault();
     console.log(formData);
-    // Send updated user data to backend
+
     try {
-      const response = await fetch('https://localshopper.azurewebsites.net/api/userUpdate', {
+      const response = await fetch(`${process.env.REACT_APP_API}/api/userUpdate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -32,22 +37,7 @@ const UpdatePage = ({handleDataUser}) => {
       });
       if (response.ok) {
         const updatedUser = await response.json();
-        console.log('User updated:', updatedUser.result.email);
-        // TODO: Add logic to display success message to user
-        handleDataUser({
-          Name:updatedUser.name,
-          Email:updatedUser.email,
-          Address:updatedUser.address,
-          Phone:updatedUser.mobile,
-          Type:updatedUser.type,
-          ProfilePicUrl:updatedUser.profilePicUrl,
-          loggedIn:true
-        });
-        localStorage.setItem('Email', updatedUser.result.email);
-        localStorage.setItem('Name', updatedUser.result.name);
-        localStorage.setItem('Phone', updatedUser.result.mobile);
-        localStorage.setItem('Address', updatedUser.result.address);
-        localStorage.setItem('Pincode', updatedUser.result.pincode);
+        dispatch(updateUser(updatedUser.result));
       }
     else {
         alert("Invalid Password");
@@ -57,12 +47,12 @@ const UpdatePage = ({handleDataUser}) => {
       // TODO: Add logic to display error message to user
     }
   };
-  
+
 
   return (
     <div className="update-page-container">
       <h2>Update Your Information</h2>
-      
+
 
       <form onSubmit={handleSubmit} className="formhk">
       <div className="select-container">
@@ -152,7 +142,7 @@ const UpdatePage = ({handleDataUser}) => {
           />
         </div>
       )}
-        
+
 
         <div className="form-group">
           <label htmlFor="password">Original Password</label>

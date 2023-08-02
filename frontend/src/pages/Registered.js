@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Dashboard.css";
 import { SideDataAdmin } from "./SideData";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import {useSelector} from "react-redux";
 
 
 
 export default function Registered() {
- 
-  const [value, changeValue] = useState([]);
 
+  const [value, changeValue] = useState([]);
+  const {user,loggedin}= useSelector(state => state.user)
 
   function loadData() {
     //fetch daata from blocked
@@ -27,15 +27,15 @@ export default function Registered() {
         <div className="image">
         <div className="imghk">
             <img
-              src={localStorage.getItem("ProfilePicUrl")}
-              alt="Profile Pic"  
+              src={user.profilePicUrl}
+              alt="Profile Pic"
               className="imghk"
             />
           </div>
           <div className="top-heading">
-            {localStorage.getItem("loggedIn") === null
+            {!loggedin
               ? "new user"
-              : localStorage.getItem("Name")}
+              : user.name}
           </div>
         </div>
         <hr className="hr" />
@@ -43,7 +43,7 @@ export default function Registered() {
           {SideDataAdmin.map((val, key) => {
             return (
               <li
-                id={window.location.pathname == val.link ? "active" : ""}
+                id={window.location.pathname === val.link ? "active" : ""}
                 className="row"
                 key={key}
                 onClick={() => {

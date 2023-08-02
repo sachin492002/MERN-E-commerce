@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PageHero } from '../components';
-import Confirm from "./Confirm";
+import {useSelector} from "react-redux";
 
 
 
@@ -9,7 +8,8 @@ import Confirm from "./Confirm";
 
 
 const Feed = ({handlefeeds}) => {
-    const [inputs, setInputs] = useState({mail:localStorage.getItem('Email')});
+    const {user,loggedin} = useSelector(state=>state.user);
+    const [inputs, setInputs] = useState({mail:user.email});
 
     const [submitted,setSubmitted]= useState(false);
     const handleChange = (event) => {
@@ -21,7 +21,7 @@ const Feed = ({handlefeeds}) => {
     const handleSubmit = (event) => {
       handlefeeds()
         setSubmitted(true)
-        return fetch('https://localshopper.azurewebsites.net/api/feeds', {
+        return fetch(`${process.env.REACT_APP_API}/api/feeds`, {
             method: 'POST',
             body: JSON.stringify(inputs),
             headers: {
@@ -29,23 +29,23 @@ const Feed = ({handlefeeds}) => {
             },
         })
             .then((res) => res.json())
-            .then((data) => console.log(data));
-    
+            .then((data) => console.log('f'));
+
 
     };
-    if(submitted===false && localStorage.getItem('loggedIn')==='true' &&(localStorage.getItem('Type')==='Buyer' || localStorage.getItem('Type')==='Seller')) {
+    if(submitted===false && loggedin &&(user.type==='Buyer' || user.type==='Seller')) {
         return (
             <Wrapper>
-                
-                  <h3 className='head'>Let's Have a feedback</h3>
-                <form onSubmit={handleSubmit} className="add">
+                <div className='flex flex-col justify-center items-center'>
+                  <h3 className='he'>Let's Have a feedback</h3>
+                <form onSubmit={handleSubmit} className="">
                     <div className='form-item'>
                         <label>Name</label>
                         <input name="id" value={inputs.id} required onChange={handleChange}/>
                     </div>
                     <div className='form-item'>
                         <label>E-mail</label>
-                        <input name="mail" type='email' value= {localStorage.getItem('Email')} required onChange={handleChange}/>
+                        <input name="mail" type='email' value= {user.email} required onChange={handleChange}/>
                     </div>
 
                     <div className='form-item'>
@@ -56,19 +56,19 @@ const Feed = ({handlefeeds}) => {
                             onChange={handleChange}
                         />
                     </div>
-                    <input type="submit" value="Send Message" className='submit'
-                    />
+                    <input type="submit" value="Send Message" className='submit ml-4'/>
                 </form>
+                </div>
             </Wrapper>
         );
     }
-    else if(localStorage.getItem('loggedIn')==='true')
+    else if(loggedin)
     return (
     null
     )
     else
     return (null)
-    
+
 };
 
 
@@ -114,9 +114,8 @@ const Wrapper = styled.section`
   .submit{
     color: var(--clr-primary-10);
     background: var(--clr-primary-5);
-    padding: 10px 0;
     border-radius: 10px;
-    margin: 0 0 10% 40%;
+    
     width:150px;
     border-color:white;
   }

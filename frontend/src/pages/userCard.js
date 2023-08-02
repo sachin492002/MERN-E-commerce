@@ -3,7 +3,7 @@ import './Card.css'
 export default function UserCard(props) {
 
   function block(item){
-    return fetch('https://localshopper.azurewebsites.net/api/blocked', {
+    return fetch(`${process.env.REACT_APP_API}/api/blocked`, {
         method: 'POST',
         body: JSON.stringify(props.item),
         headers: {
@@ -14,12 +14,12 @@ export default function UserCard(props) {
         .then((data) => console.log(props.item));
   }
 
-  return (    
+  return (
         <div className='main'>
             <h3>{props.item.email}</h3>
             <button onClick={block(props.item)}>Block</button>
-                
+
         </div>
-     
+
   );
 }
