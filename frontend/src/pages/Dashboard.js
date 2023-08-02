@@ -94,12 +94,13 @@ const Sellerorders = ({data, handleStatusChange}) => {
     )
 }
 const Profile = ({user,data,prod}) => {
-    const [imageSrc,setImageSrc]=useState(user.profilePicUrl)
+    const [imageSrc,setImageSrc]=useState(`${process.env.REACT_APP_API}/${user.profilePicUrl}`)
     const handleImageError = () => {
-        console.log("error occured")
+        console.log("error occured",imageSrc)
         setImageSrc('https://filmfare.wwmindia.com/thumb/content/2016/May/paresh_1464614885.jpg?width=1200&height=900');
-        console.log(imageSrc)
+        console.log(user)
     };
+    console.log(user)
     return (<>
         <main className="profile-page w-full" >
             <section className="relative py-16 bg-blueGray-200">
@@ -137,13 +138,13 @@ const Profile = ({user,data,prod}) => {
                                 </div>
                             </div>
                             <div className="flex flex-wrap justify-center">
-                                <div className="w-6/12 sm:w-4/12 px-4">
+                                
                                     <img
                                         src={imageSrc}
-                                        onError={handleImageError}
+                                        onError={()=>handleImageError}
                                         alt="..."
-                                        className="shadow-lg rounded-full max-w-full h-auto align-middle border-none"/>
-                                </div>
+                                        className="shadow-lg rounded-full w-48 object-cover h-48 border-r-[50%] align-middle border-none"/>
+                                
                             </div>
                             <div className="text-center mt-12">
 
@@ -166,7 +167,7 @@ const Profile = ({user,data,prod}) => {
                                     <div className="w-full lg:w-9/12 px-4">
                                         <Link to='/update'>
                                         <button
-                                            className="bg-[var(--clr-primary-1] active:bg-[var(--clr-grey-1)] uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+                                            className="bg-[var(--clr-primary-1)] active:bg-[var(--clr-grey-1)] uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
                                             type="button">
                                             Update Profile
                                         </button>
@@ -295,7 +296,7 @@ const DasSideBar = ({handleItemClick, user}) => {
                     </li>
                     {user.type === 'Buyer' &&
                         <li>
-                            <a onClick={()=>handleItemClick('orders')}
+                            <div onClick={()=>handleItemClick('orders')}
                                className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[var(--clr-primary-2)]  group">
                                 <svg
                                     className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -305,7 +306,7 @@ const DasSideBar = ({handleItemClick, user}) => {
                                         d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
                                 </svg>
                                 <span className="flex-1 ml-3 whitespace-nowrap hidden md:block">Orders</span>
-                            </a>
+                            </div>
                         </li>}
                     {user.type === 'Seller' &&
                         <li>
