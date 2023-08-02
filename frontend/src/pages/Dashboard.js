@@ -430,7 +430,7 @@ export default function Dashboard() {
         console.log(imageSrc)
         setError(true);
     };
-    // if(!prod) return <Loading/>
+    if(!prod && user.type==='Seller') return <Loading/>
 
         return (
             <div className='flex flex-row'>
