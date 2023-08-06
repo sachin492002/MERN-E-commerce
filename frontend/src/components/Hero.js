@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 // import heroBcg2 from '../assets/hero-bcg-2.jpeg'
 
 const Hero = () => {
-  return <Wrapper className="section-center pl-2 md:pl-0">
-    <article className="content">F
+  return <Wrapper className="section-center w-full pl-2 md:pl-0">
+    <article className="content">
       <h1>
       Amazing things will happen when you listen to the consumers
       </h1>

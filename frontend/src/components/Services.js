@@ -31,7 +31,7 @@ const Services = () => {
   ]
 
   return <Wrapper>
-    <div className="section-center flex flex-col justify-center items-center">
+    <div className="section-center w-full flex flex-col justify-center items-center">
       <article className="header flex flex-col justify-center items-center">
         <h3>Ensuring the best<br/> welfare of the buyers
         </h3>

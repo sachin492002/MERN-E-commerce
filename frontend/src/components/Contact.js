@@ -2,28 +2,34 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Contact = () => {
-  return <Wrapper>
-    <div className="section-center justify-center items-center pl-2 md:pl-0">
-      <h3>Join our newsletter and get 20% off</h3>
-      <div className="content">
-        <p>E-commerce trends for 2021 showed new shopping habits, a rise in marketplaces, a growing delivery market, and marketing automation, among other opportunities.</p>
-
-        <form className="contact-form"
-          action="https://formspree.io/f/xrgrrbnk"
-          method="POST"
-          >
-          <input type="email" className="form-input" placeholder="enter email" name="email" />
-          <button type="submit" className="submit-btn mr-2">
-            subscribe
-          </button>
-        </form>
-      </div>
+return (
+    <section className="bg-white mt-10 ">
+    <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+        <div className="mx-auto max-w-screen-md text-center ">
+            <h2 className="mb-4 text-3xl tracking-tight font-extrabold text-[var(--clr-dark-1)] sm:text-4xl">Sign up for our newsletter</h2>
+            <p className="mx-auto mb-8 max-w-2xl font-light text-[var(--clr-primary-1)] md:mb-12 sm:text-xl">Stay up to date with the roadmap progress, announcements and exclusive discounts feel free to sign up with your email.</p>
+            <form action="#">
+                <div className="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
+                    <div className="relative w-full">
+                        <label for="email" className="hidden mb-2 text-sm font-medium text-gray-900">Email address</label>
+                        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg className="w-5 h-5 text-[var(--clr-primary-1)] " fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        </div>
+                        <input className="block p-3 pl-10 w-full text-sm text-[var(--clr-dark-1)] bg-gray-50 rounded-lg border border-gray-300 sm:rounded-none sm:rounded-l-lg focus:ring-primary-500 focus:border-primary-500" placeholder="Enter your email" type="email" id="email" required=""/>
+                    </div>
+                    <div>
+                        <button type="" className="py-3 px-5 w-full text-sm font-medium text-center text-[var(--clr-white)] rounded-lg border cursor-pointer bg-[var(--clr-primary-1)] border-[var(--clr-primary-1)] sm:rounded-none sm:rounded-r-lg hover:bg-[var(--clr-primary-3)] focus:ring-4 focus:ring-[var(--clr-primary-1)]">Subscribe</button>
+                    </div>
+                </div>
+                <div className="mx-auto max-w-screen-sm text-sm text-left text-gray-500 newsletter-form-footer">We care about the protection of your data.</div>
+            </form>
+        </div>
     </div>
-  </Wrapper>
+  </section>
+)
 }
 
 const Wrapper = styled.section`
-  padding: 5rem 0;
   h3 {
     text-transform: capitalize;
   }

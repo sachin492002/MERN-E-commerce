@@ -54,7 +54,7 @@ const Nav = () => {
     return (
          <NavContainer>
             <Sidebar/>
-            <div className='flex justify-between items-center mx-auto max-w-screen-xl p-4'>
+            <div className='flex justify-between items-center mx-auto max-w-screen-xl pl-4 pt-4 pb-4'>
                 <div className='flex items-center'>
                     <Link to='/'>
                         <img src={logo} alt='shopper' className={!isSearchVisible ? 'w-28':'hidden'}/>
@@ -83,8 +83,8 @@ const Nav = () => {
 
                 </ul>
                 </div>
-                <div className='flex items-center'>
-                    <button type='button' className='search-icon' onClick={toggleSearchBar}>
+                <div className='flex justify-end'>
+                    <button type='button' className='search-icon mr-4' onClick={toggleSearchBar}>
                         <FaSearch className='text-2xl'/>
                     </button>
                     { !isSidebarOpen ?
