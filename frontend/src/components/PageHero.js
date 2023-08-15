@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const PageHero = ({title, product}) => {
   return <Wrapper>
-    <div className="section-center">
+    <div className="section-center ">
       <h3>
         <Link to="/">Home</Link>/ {title}
       </h3>
@@ -42,6 +42,10 @@ const Wrapper = styled.section`
   }
   a:hover {
     color: var(--clr-primary-1);
+  }
+  @media screen and (max-width: 600px) {
+      width: 100%;
+      min-height: 5vh;
   }
 `
 

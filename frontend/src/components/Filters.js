@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import { useFilterContext } from '../context/filter_context';
 import { getUniqueValues, formatPrice } from '../utils/helpers';
@@ -6,10 +6,8 @@ import { getUniqueValues, formatPrice } from '../utils/helpers';
 const Filters = () => {
     const {
         filters: {
-            text,
             category,
             company,
-            color,
             min_price,
             price,
             max_price,
@@ -22,11 +20,12 @@ const Filters = () => {
 
     const categories = getUniqueValues(all_products, 'category');
     const companies = getUniqueValues(all_products, 'company');
-    const colors = getUniqueValues(all_products, 'colors');
-
-
+    
+    
+    
     return (
         <Wrapper>
+          
             <div className="form-control">
                 <h5>category</h5>
                 <div>
