@@ -1,5 +1,7 @@
 const OrdersModal = require("../models/ordersModal");
 const ProductModal = require("../models/productModal");
+const jwt = require('jsonwebtoken');
+
 // GET Methods
 exports.getOrders = (req, res) => {
   OrdersModal.find()
@@ -75,28 +77,8 @@ exports.getOrdersSeller = async (req, res) => {
   }
 };
 
-// exports.getOrdersSeller = async (req, res) => {
-//   try {
-//     const sellerEmail = req.params.sellerEmail;
-
-//     const orders = await OrdersModal.find({"cartItems.seller": sellerEmail});
-//     const cartItems = orders.flatMap(order => { order.cartItems.filter(item => item.seller === sellerEmail)});
-
-
-
-//     console.log(cartItems)
-//     res.json(cartItems);
-//   } catch (err) {
-//     res.json({ message: err });
-//   }
-// };
-
-
-
-
-
-
 exports.updateOrderStatus = async (req, res) => {
+  
   try {
     const { orderId, itemId } = req.params;
     const {status} = req.body;
@@ -105,12 +87,19 @@ exports.updateOrderStatus = async (req, res) => {
       { _id: orderId, 'cartItems.id': itemId },
       { $set: { 'cartItems.$.status': status } },    { new: true }
     );
-
-    if (!updatedOrder) {
-      return res.status(404).json({ message: 'Order not found or item not updated' });
-    }
-
-    res.json({ message: 'Item updated successfully', item: updatedOrder.cartItems.find(item => item.id.toString() === itemId) });
+    jwt.verify(req.token, process.env.JWT_SECRET, (err, authorizedData) => {
+      if (err) {
+        console.log('ERROR: Could not connect to the protected route');
+        res.sendStatus(403);
+      } else {
+        if (!updatedOrder) {
+          return res.status(404).json({ message: 'Order not found or item not updated' });
+        }
+    
+        res.json({ message: 'Item updated successfully', item: updatedOrder.cartItems.find(item => item.id.toString() === itemId) });
+      }
+    });
+    
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Failed to update item' });

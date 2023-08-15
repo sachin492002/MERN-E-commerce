@@ -4,7 +4,7 @@ import CycloneIcon from '@mui/icons-material/Cyclone';
 
 const Footer = () => {
   return <Wrapper>
-    <div className='flex inline-flex'>
+    <div className='inline-flex'>
   <CycloneIcon/>
     <h5>
      {new Date().getFullYear()}

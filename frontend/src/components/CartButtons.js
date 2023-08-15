@@ -25,6 +25,7 @@ const CartButtons = () => {
   function logoutHandler() {
     dispatch(logoutUser())
     deleteCookie('userid');
+    deleteCookie('token');
   }
 
   return (

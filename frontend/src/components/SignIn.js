@@ -1,34 +1,11 @@
 import * as React from "react";
 import {useState} from "react";
 import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
-import {createTheme} from "@mui/material/styles";
 import "./Signup.css";
 import {useHistory} from "react-router-dom";
 import Cookies from 'js-cookie'
 import {useDispatch} from 'react-redux';
-import {setLoggedIn, setUser} from "../context/userSlice";
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Shopper
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const theme = createTheme();
-let userState = {};
-
+import {setLoggedIn, setUser,setToken} from "../context/userSlice";
 
 export default function SignIn() {
   const [inputs, setInputs] = useState({});
@@ -60,7 +37,7 @@ export default function SignIn() {
       },
       body: JSON.stringify({ username, password }),
     })
-      .then((response) => response.json())
+      .then((response) =>response.json())
       .then((resData) => {
         if(resData.message==="Invalid password")
         {
@@ -73,11 +50,13 @@ export default function SignIn() {
           history.push("/login");
           return;
         }
-
+        console.log(resData)
+        dispatch(setToken(resData?.token));
         dispatch(setUser(resData?.user));
         dispatch(setLoggedIn(true));
 
           setCookie('userid',resData.user._id,7);
+          setCookie('token',resData.token,7);
           history.push("/dashboard");
           return;
       })

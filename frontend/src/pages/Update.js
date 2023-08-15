@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import './UpdatePage.css';
+// import './UpdatePage.css';
 import {useDispatch, useSelector} from "react-redux";
 import {updateUser} from "../context/userSlice";
 
@@ -7,9 +7,10 @@ import {updateUser} from "../context/userSlice";
 const UpdatePage = () => {
 
   const dispatch = useDispatch();
-  const {user,loggedin} = useSelector(state=>state.user);
+  const {user,loggedin,token} = useSelector(state=>state.user);
+  console.log(user.email);
   const [formData, setFormData] = useState({
-    email: user.email,
+    email: user?.email,
     field: 'name',
   });
 
@@ -19,22 +20,22 @@ const UpdatePage = () => {
       ...prevFormData,
       [name]: value,
     }));
-    // console.log(formData);
   };
 
   const handleSubmit = async (event) => {
 
     event.preventDefault();
-    console.log(formData);
-
     try {
       const response = await fetch(`${process.env.REACT_APP_API}/api/userUpdate`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(formData),
+
       });
+      console.log(response);
       if (response.ok) {
         const updatedUser = await response.json();
         dispatch(updateUser(updatedUser.result));
@@ -44,20 +45,17 @@ const UpdatePage = () => {
       }
     } catch (error) {
       console.log(error);
-      // TODO: Add logic to display error message to user
     }
   };
 
 
   return (
-    <div className="update-page-container">
-      <h2>Update Your Information</h2>
-
-
+    <div className="max-w-4xl p-6 mx-auto bg-[var(--clr-white)] rounded-md shadow-md  mt-20">
+      <h2 className='text-2xl font-bold text-[var(--clr-primary-5)] capitalize'>Update Your Information</h2>
       <form onSubmit={handleSubmit} className="formhk">
       <div className="select-container">
-        <label htmlFor="select-field">Select Field to Update:</label>
-        <select id="select-field" name="field" value={formData.field} onChange={handleInputChange}>
+        <label htmlFor="select-field" className='block text-sm font-medium text-[var(--clr-primary-5)]'>Select Field to Update:</label>
+        <select id="select-field" name="field"  placeholder='field' className='block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring' value={formData.field} onChange={handleInputChange}>
           <option value="name">Name</option>
           <option value="email">Email</option>
           <option value="password">Password</option>
@@ -70,8 +68,9 @@ const UpdatePage = () => {
       {formData.field === "password" ? (
         <>
         <div className="form-group">
-          <label htmlFor="new-password">New Password</label>
+          <label htmlFor="new-password" className='block text-sm font-medium text-[var(--clr-primary-5)]'>New Password</label>
           <input
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             type="password"
             id="new-password"
             name="newvalue"
@@ -82,9 +81,10 @@ const UpdatePage = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="confirm-password">Confirm Password</label>
+          <label htmlFor="confirm-password" className='block text-sm font-medium text-[var(--clr-primary-5)]'>Confirm Password</label>
           <input
             type="password"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             id="confirm-password"
             name="confirmPassword"
             value={formData.newvalue}
@@ -95,10 +95,11 @@ const UpdatePage = () => {
         </>
       ) : formData.field === "email" ? (
         <div className="form-group">
-          <label htmlFor="new-email">New Email</label>
+          <label htmlFor="new-email" className='block text-sm font-medium text-[var(--clr-primary-5)]'>New Email</label>
           <input
             type="email"
             id="new-email"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             name="newvalue"
             value={formData.newvalue}
             onChange={handleInputChange}
@@ -107,10 +108,11 @@ const UpdatePage = () => {
         </div>
       ) : formData.field === "mobile" ? (
         <div className="form-group">
-          <label htmlFor="mobile">New Mobile No</label>
+          <label htmlFor="mobile" className='block text-sm font-medium text-[var(--clr-primary-5)]'>New Mobile No</label>
           <input
             type="tel"
             id="mobile"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             name="newvalue"
             value={formData.newvalue}
             onChange={handleInputChange}
@@ -119,10 +121,11 @@ const UpdatePage = () => {
         </div>
       ) : formData.field === "pincode" ? (
         <div className="form-group">
-          <label htmlFor="mobile">New Pincode</label>
+          <label htmlFor="mobile" className='block text-sm font-medium text-[var(--clr-primary-5)]'>New Pincode</label>
           <input
             type="number"
             id="pincode"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             name="newvalue"
             value={formData.newvalue}
             onChange={handleInputChange}
@@ -131,11 +134,12 @@ const UpdatePage = () => {
         </div> ) : (
 
       <div className="form-group">
-          <label htmlFor="newvalue">New {formData.field}</label>
+          <label htmlFor="newvalue" className='block text-sm font-medium text-[var(--clr-primary-5)]'>New {formData.field}</label>
           <input
             type="text"
             id="newvalue"
             name="newvalue"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             value={formData.newvalue}
             onChange={handleInputChange}
             required
@@ -145,17 +149,21 @@ const UpdatePage = () => {
 
 
         <div className="form-group">
-          <label htmlFor="password">Original Password</label>
+          <label htmlFor="password" className='block text-sm font-medium text-[var(--clr-primary-5)]'>Original Password</label>
           <input
             type="password"
             id="password"
             name="password"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md   focus:outline-none focus:ring"
             value={formData.confirmpassword}
             onChange={handleInputChange}
             required
           />
         </div>
-        <button type="submit">Update</button>
+        <div className='flex items-center justify-center h-20'>
+        <button type="submit" className="px-6  text-center py-2 leading-5 text-[var(--clr-primary-5)] transition-colors duration-200 transform bg-[var(--clr-grey-1)] rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Update</button>
+        </div>
+        
       </form>
     </div>
   );

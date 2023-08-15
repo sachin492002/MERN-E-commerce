@@ -9,7 +9,7 @@ import { Update,SellerItems,Registered,SupportAdmin,Home, SingleProduct, Cart, E
 import AddProduct from "./pages/AddProduct";
 import {useDispatch} from "react-redux";
 import axios from "axios";
-import {setLoggedIn, setUser} from "./context/userSlice";
+import {setLoggedIn, setUser,setToken} from "./context/userSlice";
 
 import Cookies from 'js-cookie'
 import Temp from "./pages/Users";
@@ -21,7 +21,7 @@ function App() {
     axios
         .get(`${process.env.REACT_APP_API}/api/user/${Cookies.get('userid')}`)
         .then((response) => {
-
+          dispatch(setToken(Cookies.get('token')));
           dispatch(setUser(response.data));
           dispatch(setLoggedIn(true));
         })},[])
@@ -93,9 +93,8 @@ function App() {
             <Error />
           </Route>
         </Switch>
-
-        <Footer />
       </Router>
+      <Footer />
     </div>
   );
 }
