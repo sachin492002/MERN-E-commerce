@@ -44,6 +44,7 @@ body {
 }
 
 .card .card-image {
+
   min-width: 20%;
   max-width: max-content;
   margin-right: 5%;

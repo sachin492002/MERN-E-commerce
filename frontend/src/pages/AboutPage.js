@@ -1,77 +1,68 @@
-import React from 'react'
-import styled from 'styled-components'
-import {PageHero} from '../components'
-import vinay from '../assets/vinay.jpeg'
-import talwar from '../assets/talwar.jpeg'
-import varun from '../assets/varun.jpeg'
-import sachin from '../assets/sachin.jpeg'
-import himanshu from "../assets/himanshu2.jpg"
+import React from 'react';
+import styled from 'styled-components';
+import { PageHero } from '../components';
+import vinay from '../assets/vinay.jpeg';
+import talwar from '../assets/talwar.jpeg';
+import varun from '../assets/varun.jpeg';
+import sachin from '../assets/sachin.jpeg';
+import himanshu from '../assets/himanshu2.jpg';
 const team = [
   {
-    name: "Himanshu Kataria",
-    position: "SPOC",
-    github: "https://github.com/sachin492002",
-    photo: himanshu
+    name: 'Himanshu Kataria',
+    position: 'SPOC',
+    github: 'https://github.com/sachin492002',
+    photo: himanshu,
   },
   {
-    name: "Varun Giri",
-    position: "Member 2",
-    github: "https://github.com/sachin492002",
-    photo: varun
+    name: 'Varun Giri',
+    position: 'Member 2',
+    github: 'https://github.com/sachin492002',
+    photo: varun,
   },
   {
-    name: "Vinay Rao",
-    position: "Member 3",
-    github: "https://github.com/sachin492002",
-    photo: vinay
+    name: 'Vinay Rao',
+    position: 'Member 3',
+    github: 'https://github.com/sachin492002',
+    photo: vinay,
   },
   {
-    name: "Sachin Meena",
-    position: "Member 4",
-    github: "https://github.com/sachin492002",
-    photo:sachin
+    name: 'Sachin Meena',
+    position: 'Member 4',
+    github: 'https://github.com/sachin492002',
+    photo: sachin,
   },
   {
-    name: "Veera Shekhar",
-    position: "Member 5",
-    github: "https://github.com/sachin492002",
-    photo: talwar
-  }
-]
+    name: 'Veera Shekhar',
+    position: 'Member 5',
+    github: 'https://github.com/sachin492002',
+    photo: talwar,
+  },
+];
 const AboutPage = () => {
-  return <main>
+  return (
+    <main>
+      <PageHero title="About" />
 
-    <PageHero title="About" />
-
-  <Wrapper>
-      <div className="about-page">
-        <p className="text-blk section-head-text">Meet Our Team
-        </p>
-
-        <div className="about-page-map">
-          {(
-
-              team.map((mem) => (
-                  <div
-                      className="responsive-cell-block  team-card-container">
-                    <div className="team-card">
-                      <div className="img-wrapper">
-                        <img
-                            src={mem.photo}
-                            className="team-img"/>
-                      </div>
-                      <p className="text-blk name">{mem.name}
-                      </p>
-
-
-                    </div>
+      <Wrapper>
+        <div className="about-page">
+          <p className="text-blk section-head-text">Meet Our Team</p>
+          <div className="about-page-map">
+            {team.map((mem) => (
+              <div className="responsive-cell-block  team-card-container">
+                <div className="team-card">
+                  <div className="img-wrapper">
+                    <img src={mem.photo} className="team-img" />
                   </div>
-              )))}
+                  <p className="text-blk name">{mem.name}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
       </Wrapper>
-  </main>
-}
+    </main>
+  );
+};
 
 const Wrapper = styled.section`
   .text-blk {
@@ -92,8 +83,8 @@ const Wrapper = styled.section`
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    margin:50px 300px ;
-    
+    margin: 50px 300px;
+
     justify-content: space-evenly;
   }
 
@@ -145,7 +136,7 @@ const Wrapper = styled.section`
     border-radius: 50%;
     overflow: hidden;
     width: 200px;
-    height: 200px
+    height: 200px;
   }
 
   .team-card {
@@ -155,7 +146,6 @@ const Wrapper = styled.section`
   }
 
   .social-media-links {
-    
     display: flex;
     justify-content: space-between;
   }
@@ -224,6 +214,5 @@ const Wrapper = styled.section`
       text-align: center;
     }
   }
-
-`
-export default AboutPage
+`;
+export default AboutPage;

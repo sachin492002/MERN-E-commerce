@@ -3,7 +3,6 @@
     "start": "nodemon server.js",
     "devStart": "nodemon server.js",
     "test": "mocha --timeout 5000",
-    "build": "npm i",
     "docker-build-client": "NPM_CONFIG_PRODUCTION=false cd frontend && npm install && npm run build",
     "docker-build-webapp": "npm start"
   },
